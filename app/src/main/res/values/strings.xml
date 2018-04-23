@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">car2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_order_request">OrderRequestActivity</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="test_text_m">
+        this is test text bla asdsa \n
+        asdassd asd sad asdfs sadasd
+    </string>
+    <string name="test_text_s">Hello</string>
+    <string name="test_text_l">sfsgfdg dgdsfg fgdgfh dffdgdg gffgh fgj hfhfghfhfg fhgfh  fghfh fghfth  hdhdh  shrth fhdrthsrth  hdtyjyh hdh6hrt hdhh hh5a f rtdhe56  srthe56h w</string>
+    <string name="test_text_s_u"><u>Hello World</u></string>
+    <string name="show_offers"><a>Show offers</a></string>
+</resources>

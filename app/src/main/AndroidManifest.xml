@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yesat.car">
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ui.auth.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.order.create.OrderNew0Activity" />
+        <activity android:name=".ui.order.create.OrderNew1Activity" />
+        <activity android:name=".ui.order.create.OrderNew2Activity" />
+        <activity android:name=".ui.order.create.OrderNew3Activity" />
+        <activity android:name=".ui.order.create.OrderNew4Activity" />
+        <activity android:name=".ui.order.create.OrderNew5Activity" />
+        <activity android:name=".ui.client.XMainActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ui.client.posted.XOfferListActivity" />
+        <activity android:name=".ui.client.posted.CourierOfferPProfileActivity" />
+        <activity android:name=".ui.client.active.CourierOfferAProfileActivity" />
+        <activity android:name=".ui.order.create.OrderNewActivity" />
+        <activity android:name=".ui.client.OrderNewActivity" />
+        <activity android:name=".ui.info.LocationActivity" />
+        <activity android:name=".ui.info.PaymentTypeActivity" />
+        <activity android:name=".ui.client.CategoryActivity" />
+    </application>
+
+</manifest>

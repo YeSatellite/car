@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_grey"
+    tools:context="com.yesat.car.ui.OrderDetailActivity">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:padding="32dp"
+        android:paddingTop="32dp">
+
+        <include
+            layout="@layout/tmp_order_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </android.support.v7.widget.CardView>
+
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.yesat.car.ui.client.posted.XOfferListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="399dp"
+        tools:layout="@layout/tmp_recycler_view" />
+
+
+</LinearLayout>
