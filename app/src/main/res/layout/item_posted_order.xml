@@ -23,6 +23,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/v_order_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/include"
+            app:layout_constraintTop_toTopOf="@+id/include"
+            app:srcCompat="@android:drawable/button_onoff_indicator_on" />
+
         <LinearLayout
             android:id="@+id/asdasd"
             android:layout_width="match_parent"
@@ -81,16 +91,6 @@
             app:layout_constraintStart_toStartOf="@+id/asdasd"
             app:layout_constraintTop_toBottomOf="@+id/asdasd"
             tools:text="@string/test_text_l" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/include"
-            app:layout_constraintTop_toTopOf="@+id/include"
-            app:srcCompat="@android:drawable/button_onoff_indicator_on" />
 
         <TextView
             android:id="@+id/v_show_offers"

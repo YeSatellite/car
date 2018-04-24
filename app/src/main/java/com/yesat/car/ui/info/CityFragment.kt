@@ -11,6 +11,7 @@ import com.yesat.car.R
 import com.yesat.car.model.Location
 import com.yesat.car.ui.common.ListFragment
 import com.yesat.car.utility.Shared
+import com.yesat.car.utility.put2
 import com.yesat.car.utility.run2
 import com.yesat.car.utility.snack
 import kotlinx.android.synthetic.main.item_info_tmp.view.*
@@ -45,7 +46,7 @@ class CityFragment(val call: Call<List<Location>>) : ListFragment<Location, City
 
     override fun onItemClick(item: Location){
         val i = Intent()
-        i.putExtra(Shared.city,item)
+        i.put2(item)
         activity!!.setResult(Activity.RESULT_OK,i)
         activity!!.finish()
     }

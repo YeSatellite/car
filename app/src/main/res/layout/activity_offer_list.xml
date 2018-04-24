@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/bg_grey"
-    tools:context="com.yesat.car.ui.OrderDetailActivity">
+    tools:context="com.yesat.car.ui.client.XOrderDetailActivity">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"

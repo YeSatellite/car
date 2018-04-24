@@ -11,10 +11,7 @@ import com.yesat.car.R
 import com.yesat.car.model.InfoTmp
 import com.yesat.car.ui.common.ListActivity
 import com.yesat.car.ui.common.ListFragment
-import com.yesat.car.utility.Api
-import com.yesat.car.utility.Shared
-import com.yesat.car.utility.run2
-import com.yesat.car.utility.snack
+import com.yesat.car.utility.*
 import kotlinx.android.synthetic.main.item_info_tmp.view.*
 
 
@@ -45,7 +42,7 @@ class PaymentTypeActivity: ListActivity<InfoTmp, PaymentTypeActivity.ViewHolder>
 
     override fun onItemClick(item: InfoTmp){
         val i = Intent()
-        i.putExtra(Shared.paymentType,item)
+        i.put2(item)
         setResult(Activity.RESULT_OK,i)
         finish()
     }

@@ -23,10 +23,7 @@ import com.yesat.car.model.Location
 import com.yesat.car.model.Order
 import com.yesat.car.ui.info.LocationActivity
 import com.yesat.car.ui.info.PaymentTypeActivity
-import com.yesat.car.utility.Shared
-import com.yesat.car.utility.get2
-import com.yesat.car.utility.locationFormat
-import com.yesat.car.utility.onChange
+import com.yesat.car.utility.*
 import kotlinx.android.synthetic.main.activity_order_new.*
 import kotlinx.android.synthetic.main.tmp_order_image.view.*
 
@@ -74,16 +71,44 @@ class OrderNewActivity : AppCompatActivity() {
             startActivityForResult(i,PAYMENT_TYPE_REQUEST_CODE)
         }
 
-        order.ownerType = when(v_owner_type.checkedRadioButtonId){
-            R.id.v_natural_person -> 1
-            R.id.v_juridical_person -> 2
-            else -> -1
-        }
-
+        v_create.setOnClickListener({
+            create()
+        })
     }
 
-    fun save(){
+    fun create(){
+        try{
+            order.title = v_title.get(getString(R.string.is_empty,"title"))
+            order.comment = v_comment.get("comment is empty")
+            val height = v_height.get("height is empty").toFloat()
+            val width = v_width.get("width is empty").toFloat()
+            val length = v_length.get("length is empty").toFloat()
+            order.volume = height*width*length/1000000
+            order.mass = v_mass.get("mass is empty").toFloat()
+            if (order.startPoint == null) throw IllegalStateException("start point is empty")
+            if (order.endPoint == null) throw IllegalStateException("end point is empty")
+            order.startDetail = v_start_detail.get("Start Detail is empty")
+            order.endDetail = v_end_detail.get("Start Detail is empty")
+            order.shippingDate = v_shipping_date.get("shipping date is empty")
+            order.shippingTime = v_shipping_time.get("shipping time is empty")
+            order.acceptPerson = v_accept_person.get("acceptPerson is empty")
+            order.acceptPersonContact = v_accept_person.get("acceptPersonContact is empty")
+            order.ownerType = when(v_owner_type.checkedRadioButtonId){
+                R.id.v_natural_person -> 1
+                R.id.v_juridical_person -> 2
+                else -> throw IllegalStateException("select owner type")
+            }
 
+            Api.clientService.orderAdd(order).run2(this,{ _ ->
+                setResult(Activity.RESULT_OK, Intent())
+                finish()
+            },{ _, error ->
+                snack(error)
+            })
+            
+        }catch (ex: IllegalStateException){
+            snack(ex.message ?: "Unknown error")
+        }
     }
 
 
@@ -153,15 +178,15 @@ class OrderNewActivity : AppCompatActivity() {
                     }
                 }
                 START_POINT_REQUEST_CODE -> {
-                    order.startPoint = data!!.getSerializableExtra(Shared.city) as Location
-                    v_start_point.setText(locationFormat(order.startPoint!!), TextView.BufferType.EDITABLE)
+                    order.startPoint = data!!.get2(Location::class.java)
+                    v_start_point.text2 = locationFormat(order.startPoint!!)
                 }
                 END_POINT_REQUEST_CODE -> {
-                    order.endPoint = data!!.getSerializableExtra(Shared.city) as Location
-                    v_end_point.setText(locationFormat(order.endPoint!!), TextView.BufferType.EDITABLE)
+                    order.endPoint = data!!.get2(Location::class.java)
+                    v_end_point.text2 = locationFormat(order.endPoint!!)
                 }
                 PAYMENT_TYPE_REQUEST_CODE -> {
-                    val paymentType =  data!!.getSerializableExtra(Shared.paymentType) as InfoTmp
+                    val paymentType =  data!!.get2(InfoTmp::class.java)
                     order.paymentType = paymentType.id
                     v_payment_type.setText(paymentType.name, TextView.BufferType.EDITABLE)
                 }

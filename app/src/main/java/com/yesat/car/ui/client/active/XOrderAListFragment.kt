@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.yesat.car.R
 import com.yesat.car.model.Order
+import com.yesat.car.ui.client.XOrderDetailActivity
 import com.yesat.car.ui.client.posted.CourierOfferPProfileActivity
 import com.yesat.car.ui.common.ListFragment
 import com.yesat.car.utility.*
@@ -41,6 +42,7 @@ class XOrderAListFragment : ListFragment<Order, XOrderAListFragment.ViewHolder>(
         val hPrice = v.v_price!!
         val hComment = v.v_comment!!
         val hYourCourier = v.v_your_courier!!
+        val hOrderDetail = v.v_order_detail!!
 
     }
     override fun onBindViewHolder2(holder: ViewHolder, item: Order) {
@@ -56,12 +58,15 @@ class XOrderAListFragment : ListFragment<Order, XOrderAListFragment.ViewHolder>(
             i.putExtra(Shared.offer,item.offer!!)
             startActivityForResult(i, 25)
         })
+        holder.hOrderDetail.setOnClickListener {
+            val i = Intent(activity, XOrderDetailActivity::class.java)
+            i.put2(item)
+            startActivity(i)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        norm("Hello3")
         if (requestCode == 25) {
-            norm("Hello")
             if (resultCode == Activity.RESULT_OK) {
                 refreshListener!!.onRefresh()
             }

@@ -42,7 +42,7 @@ object Api {
         fun login(@Body phone_sms: Map<String, String>): Call<User>
 
         @POST("$path/sent-sms/")
-        fun sentSms(@Body phone: Map<String, String>): Call<User>
+        fun sentSms(@Body phone: Map<String, String>): Call<Any>
     }
 
     var infoService = retrofit.create(InfoService::class.java)!!

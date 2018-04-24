@@ -14,6 +14,7 @@ import android.os.Bundle
 import android.view.*
 import android.view.MenuInflater
 import com.yesat.car.ui.client.CategoryActivity
+import com.yesat.car.ui.client.XOrderDetailActivity
 
 
 class XOrderPListFragment : ListFragment<Order, XOrderPListFragment.ViewHolder>() {
@@ -43,6 +44,7 @@ class XOrderPListFragment : ListFragment<Order, XOrderPListFragment.ViewHolder>(
         val hPosition = v.v_position!!
         val hComment = v.v_comment!!
         val hShowOffers = v.v_show_offers!!
+        val hOrderDetail = v.v_order_detail!!
 
     }
     override fun onBindViewHolder2(holder: ViewHolder, item: Order) {
@@ -57,6 +59,11 @@ class XOrderPListFragment : ListFragment<Order, XOrderPListFragment.ViewHolder>(
             i.putExtra(Shared.order,item)
             startActivityForResult(i, OFFER_LIST_ACTIVITY)
         })
+        holder.hOrderDetail.setOnClickListener {
+            val i = Intent(activity, XOrderDetailActivity::class.java)
+            i.put2(item)
+            startActivityForResult(i, OFFER_LIST_ACTIVITY)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

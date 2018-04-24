@@ -35,9 +35,7 @@ class XOfferListActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        norm("Hello3")
         if (requestCode == COURIER_OFFER_PROFILE){
-            norm("Hello")
             if (resultCode == Activity.RESULT_OK){
                 setResult(Activity.RESULT_OK, Intent())
                 finish()

@@ -1,326 +1,344 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    tools:layout_editor_absoluteY="8dp">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.v4.view.ViewPager
-                android:id="@+id/images"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintDimensionRatio="H,16:9"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:background="@drawable/avatar">
-
-            </android.support.v4.view.ViewPager>
-
-            <TextView
-                android:id="@+id/v_image_text"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:background="@color/black_alpha"
-                android:gravity="center_vertical"
-                android:paddingStart="10dp"
-                android:text="TextView"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <ImageView
-                android:id="@+id/v_image_new"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/v_image_text"
-                app:layout_constraintEnd_toEndOf="@+id/v_image_text"
-                app:layout_constraintTop_toTopOf="@+id/v_image_text"
-                app:srcCompat="@android:drawable/ic_menu_camera" />
-        </android.support.constraint.ConstraintLayout>
-
-        <!--#####################################################################################-->
-        <TextView
-            android:id="@+id/_text_view2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/bg_grey"
-            android:padding="10dp"
-            android:text="TextView"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/v_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/test_text_s"
-            android:inputType="textPersonName"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp" />
-
-        <EditText
-            android:id="@+id/v_comment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:gravity="top"
-            android:hint="@string/test_text_s"
-            android:inputType="text|textMultiLine"
-            android:lines="5"
-            android:singleLine="false"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp"/>
-
-        <!--#####################################################################################-->
-        <TextView
-            android:id="@+id/_text_view3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/bg_grey"
-            android:padding="10dp"
-            android:text="TextView"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/v_width"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/test_text_s"
-            android:inputType="number"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp" />
-        <EditText
-            android:id="@+id/v_length"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/test_text_s"
-            android:inputType="number"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp" />
-        <EditText
-            android:id="@+id/v_height"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/test_text_s"
-            android:inputType="number"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp" />
-        <EditText
-            android:id="@+id/v_mass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/test_text_s"
-            android:inputType="number"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp" />
-
-        <!--#####################################################################################-->
-        <TextView
-            android:id="@+id/_text_view4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/bg_grey"
-            android:padding="10dp"
-            android:text="TextView"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/v_start_point"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:focusable="false"
-            android:hint="@string/test_text_s"
-            android:inputType="text"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp" />
-
-        <EditText
-            android:id="@+id/v_start_detail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/test_text_s"
-            android:inputType="text"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp" />
-
-        <EditText
-            android:id="@+id/v_end_point"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:focusable="false"
-            android:hint="@string/test_text_s"
-            android:inputType="text"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp" />
-
-        <EditText
-            android:id="@+id/v_end_detail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/test_text_s"
-            android:inputType="text"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp" />
-
-        <!--#####################################################################################-->
-        <TextView
-            android:id="@+id/_text_view5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/bg_grey"
-            android:padding="10dp"
-            android:text="TextView"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:layout_editor_absoluteY="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/images"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="H,16:9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:background="@drawable/avatar">
+
+                </android.support.v4.view.ViewPager>
+
+                <TextView
+                    android:id="@+id/v_image_text"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:background="@color/black_alpha"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:text="TextView"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageView
+                    android:id="@+id/v_image_new"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/v_image_text"
+                    app:layout_constraintEnd_toEndOf="@+id/v_image_text"
+                    app:layout_constraintTop_toTopOf="@+id/v_image_text"
+                    app:srcCompat="@android:drawable/ic_menu_camera" />
+            </android.support.constraint.ConstraintLayout>
+
+            <!--#####################################################################################-->
+            <TextView
+                android:id="@+id/_text_view2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/bg_grey"
+                android:padding="10dp"
+                android:text="TextView"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/v_shipping_date"
+                android:id="@+id/v_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/test_text_s"
-                android:inputType="date"
+                android:inputType="textPersonName"
                 android:paddingEnd="10dp"
                 android:paddingStart="10dp" />
+
             <EditText
-                android:id="@+id/v_shipping_time"
+                android:id="@+id/v_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:gravity="top"
+                android:hint="@string/test_text_s"
+                android:inputType="text|textMultiLine"
+                android:lines="5"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:singleLine="false" />
+
+            <!--#####################################################################################-->
+            <TextView
+                android:id="@+id/_text_view3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/bg_grey"
+                android:padding="10dp"
+                android:text="TextView"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/v_width"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/test_text_s"
-                android:inputType="datetime"
+                android:inputType="number"
                 android:paddingEnd="10dp"
                 android:paddingStart="10dp" />
+
+            <EditText
+                android:id="@+id/v_length"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/test_text_s"
+                android:inputType="number"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp" />
+
+            <EditText
+                android:id="@+id/v_height"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/test_text_s"
+                android:inputType="number"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp" />
+
+            <EditText
+                android:id="@+id/v_mass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/test_text_s"
+                android:inputType="number"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp" />
+
+            <!--#####################################################################################-->
+            <TextView
+                android:id="@+id/_text_view4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/bg_grey"
+                android:padding="10dp"
+                android:text="TextView"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/v_start_point"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="@string/test_text_s"
+                android:inputType="text"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp" />
+
+            <EditText
+                android:id="@+id/v_start_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/test_text_s"
+                android:inputType="text"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp" />
+
+            <EditText
+                android:id="@+id/v_end_point"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="@string/test_text_s"
+                android:inputType="text"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp" />
+
+            <EditText
+                android:id="@+id/v_end_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/test_text_s"
+                android:inputType="text"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp" />
+
+            <!--#####################################################################################-->
+            <TextView
+                android:id="@+id/_text_view5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/bg_grey"
+                android:padding="10dp"
+                android:text="TextView"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/v_shipping_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="@string/test_text_s"
+                    android:inputType="date"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp" />
+
+                <EditText
+                    android:id="@+id/v_shipping_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="@string/test_text_s"
+                    android:inputType="datetime"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp" />
+            </LinearLayout>
+
+            <!--#####################################################################################-->
+            <TextView
+                android:id="@+id/_text_view6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/bg_grey"
+                android:padding="10dp"
+                android:text="TextView"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/v_accept_person"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/test_text_s"
+                android:inputType="text"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp" />
+
+            <EditText
+                android:id="@+id/v_accept_person_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/test_text_s"
+                android:inputType="text"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp" />
+
+            <!--#####################################################################################-->
+            <TextView
+                android:id="@+id/_text_view7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/bg_grey"
+                android:padding="10dp"
+                android:text="TextView"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/v_payment_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="@string/test_text_s"
+                android:inputType="text"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp" />
+
+            <RadioGroup
+                android:id="@+id/v_owner_type"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp">
+
+                <RadioButton
+                    android:id="@+id/v_natural_person"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="RadioButton1" />
+
+                <RadioButton
+                    android:id="@+id/v_juridical_person"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="RadioButton2" />
+            </RadioGroup>
+
         </LinearLayout>
+    </ScrollView>
 
-        <!--#####################################################################################-->
-        <TextView
-            android:id="@+id/_text_view6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/bg_grey"
-            android:padding="10dp"
-            android:text="TextView"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/v_accept_person"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/test_text_s"
-            android:inputType="text"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp" />
-
-        <EditText
-            android:id="@+id/v_accept_person_contact"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/test_text_s"
-            android:inputType="text"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp" />
-
-        <!--#####################################################################################-->
-        <TextView
-            android:id="@+id/_text_view7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/bg_grey"
-            android:padding="10dp"
-            android:text="TextView"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/v_payment_type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:focusable="false"
-            android:hint="@string/test_text_s"
-            android:inputType="text"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp" />
-
-        <RadioGroup
-            android:id="@+id/v_owner_type"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp">
-
-            <RadioButton
-                android:id="@+id/v_natural_person"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="RadioButton1" />
-
-            <RadioButton
-                android:id="@+id/v_juridical_person"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="RadioButton2" />
-        </RadioGroup>
-
-    </LinearLayout>
-</ScrollView>
+    <Button
+        android:id="@+id/v_create"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="Create"
+        android:textColor="@color/cardview_light_background" />
+</LinearLayout>

@@ -96,7 +96,7 @@ fun ViewPager.onChange(listener:(position:Int) -> Unit){
 
 @Suppress("UNCHECKED_CAST")
 fun <T: Serializable> Intent.get2(type : Class<T>): T{
-    norm(">>>get "+data::class.java.simpleName)
+    norm(">>>get "+type.simpleName)
     return this.getSerializableExtra(type.simpleName) as T
 }
 
@@ -104,6 +104,12 @@ fun Intent.put2(data: Serializable){
     norm(">>>put "+data::class.java.simpleName)
     this.putExtra(data::class.java.simpleName,data)
 }
+
+var EditText.text2 : String
+    get() = text.toString()
+    set(value) {
+        setText(value, TextView.BufferType.EDITABLE)
+    }
 
 
 
