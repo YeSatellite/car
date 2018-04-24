@@ -1,18 +1,15 @@
-package com.yesat.car.ui
+package com.yesat.car.ui.client
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.yesat.car.R
 import com.yesat.car.model.Order
-import com.yesat.car.utility.Shared
+import com.yesat.car.utility.*
 import com.yesat.car.utility.Shared.norm
-import com.yesat.car.utility.definePosition
-import com.yesat.car.utility.locationFormat
-import com.yesat.car.utility.src
 import kotlinx.android.synthetic.main.activity_order_detail.*
 import kotlinx.android.synthetic.main.tmp_order_item.*
 
-class OrderDetailActivity : AppCompatActivity() {
+class XOrderDetailActivity : AppCompatActivity() {
 
     private var order: Order? = null
 
@@ -20,7 +17,7 @@ class OrderDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_detail)
 
-        order = intent.getSerializableExtra(Shared.order) as Order?
+        order = intent.get2(Order::class.java)
         norm(order.toString())
 
         v_title.text = order!!.title
@@ -36,8 +33,8 @@ class OrderDetailActivity : AppCompatActivity() {
 
         v_comment.text = order!!.comment
 
-        v_image1.src = order!!.image1!!
-        v_image2.src = order!!.image2!!
+        v_image1.src = order!!.image1
+        v_image2.src = order!!.image2
 
     }
 }
