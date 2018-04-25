@@ -10,10 +10,8 @@ import android.view.ViewGroup
 import com.yesat.car.R
 import com.yesat.car.model.Order
 import com.yesat.car.ui.client.XOrderDetailActivity
-import com.yesat.car.ui.client.posted.CourierOfferPProfileActivity
-import com.yesat.car.ui.common.ListFragment
+import com.yesat.car.utility.ui.ListFragment
 import com.yesat.car.utility.*
-import com.yesat.car.utility.Shared.norm
 import kotlinx.android.synthetic.main.item_active_order.view.*
 import kotlinx.android.synthetic.main.tmp_order_item.view.*
 
@@ -24,7 +22,7 @@ class XOrderAListFragment : ListFragment<Order, XOrderAListFragment.ViewHolder>(
             adapter.list = body
             adapter.notifyDataSetChanged()
         },{ _, error ->
-            activity!!.snack(error)
+            activity?.snack(error)
         })
     }
 

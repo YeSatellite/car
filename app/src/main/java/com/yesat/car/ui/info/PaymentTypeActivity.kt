@@ -2,15 +2,14 @@ package com.yesat.car.ui.info
 
 import android.app.Activity
 import android.content.Intent
-import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yesat.car.R
 import com.yesat.car.model.InfoTmp
-import com.yesat.car.ui.common.ListActivity
-import com.yesat.car.ui.common.ListFragment
+import com.yesat.car.utility.ui.ListActivity
+import com.yesat.car.utility.ui.ListFragment
 import com.yesat.car.utility.*
 import kotlinx.android.synthetic.main.item_info_tmp.view.*
 

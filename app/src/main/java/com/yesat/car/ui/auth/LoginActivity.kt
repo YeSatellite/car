@@ -1,8 +1,13 @@
 package com.yesat.car.ui.auth
 
+import android.Manifest
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
+import com.theartofdev.edmodo.cropper.CropImage
 import com.yesat.car.R
 import com.yesat.car.ui.client.XMainActivity
 import com.yesat.car.utility.*
@@ -24,9 +29,16 @@ class LoginActivity : AppCompatActivity() {
         val map = hashMapOf("phone" to phone,"sms_code" to smsCode)
         Api.authService.login(map).run2(this,{user ->
             Shared.currentUser = user
-            startActivity(Intent(this, XMainActivity::class.java))
+            val status = clientOrCourier()
+            startActivity(Intent(this, status))
         },{ _, error ->
             snack(error)
         })
     }
+    
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        finish()
+    }
+
+
 }

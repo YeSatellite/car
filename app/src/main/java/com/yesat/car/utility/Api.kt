@@ -88,6 +88,28 @@ object Api {
                          @Part("offer") offerId: Long): Call<Any>
     }
 
+    var courierService = retrofit.create(CourierService::class.java)!!
+    interface CourierService {
+        companion object {
+            const val path = "courier"
+        }
+
+        @GET("$path/transports/")
+        fun transports(): Call<List<Transport>>
+
+
+        @GET("$path/order/")
+        fun orders(@Query("status") status: String): Call<List<Order>>
+
+//        @POST("$path/order/")
+//        fun orderAdd(@Body order: Order): Call<Order>
+
+        @GET("$path/order/{id}/offers/")
+        fun offers(@Path("id") orderId: Long): Call<List<Offer>>
+
+
+    }
+
 
 
 
@@ -105,7 +127,8 @@ object Api {
 
     val ERROR_CODE = mapOf(
             100 to "Unknown error",
-            101 to "phone already exist"
+            101 to "phone already exist",
+            102 to "phone number is not correct"
     )
 
 }

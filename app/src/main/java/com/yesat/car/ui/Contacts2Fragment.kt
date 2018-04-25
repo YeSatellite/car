@@ -11,7 +11,6 @@ import com.example.yesat.startkotlin.model.Contact
 import com.yesat.car.R
 import com.yesat.car.utility.Api
 import com.yesat.car.utility.setOnRefreshListenerAuto
-import com.yesat.car.ui.common.ContactsAdapter
 import kotlinx.android.synthetic.main.fragment_contact2.view.*
 import kotlinx.android.synthetic.main.tmp_recycler_view.view.*
 

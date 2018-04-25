@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import com.yesat.car.R
 import com.yesat.car.model.User
 import com.yesat.car.ui.client.XMainActivity
+import com.yesat.car.ui.courier.YMainActivity
 import com.yesat.car.utility.*
 import kotlinx.android.synthetic.main.activity_sms.*
 
@@ -29,7 +30,8 @@ class SmsActivity : AppCompatActivity() {
 
     private fun isAuthorised() {
         if ( Shared.currentUser.token != null){
-            startActivity(Intent(this, XMainActivity::class.java))
+            val status = clientOrCourier()
+            startActivity(Intent(this, status))
         }
     }
 
@@ -42,18 +44,6 @@ class SmsActivity : AppCompatActivity() {
         },{ _, error ->
             snack(error)
         })
-    }
-
-    private fun login(phone:String, smsCode:String){
-        val map = hashMapOf("phone" to phone,"sms_code" to smsCode)
-        Api.authService.login(map).run2(this,{user ->
-            Shared.currentUser = user
-        },{ _, error ->
-            snack(error)
-        })
-    }
-    fun logout(){
-        Shared.currentUser = User()
     }
 }
 

@@ -1,13 +1,10 @@
 package com.yesat.car.ui.client.active
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.yesat.car.R
 import com.yesat.car.model.Offer
 import com.yesat.car.utility.*
-import com.yesat.car.utility.Shared.norm
 import kotlinx.android.synthetic.main.activity_courier_offer_profile.*
 import kotlinx.android.synthetic.main.tmp_courier_profile.*
 
@@ -19,7 +16,7 @@ class CourierOfferAProfileActivity : AppCompatActivity() {
         val offer = intent.getSerializableExtra(Shared.offer) as Offer
         val user = offer.transport!!.owner!!
 
-        v_avatar.src = user.avatar
+        v_image.src = user.avatar
         v_rating.text = user.rating
         v_phone.text = user.phone
         v_name.text = user.name

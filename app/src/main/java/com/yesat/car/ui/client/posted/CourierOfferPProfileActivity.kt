@@ -19,7 +19,7 @@ class CourierOfferPProfileActivity : AppCompatActivity() {
         val offer = intent.getSerializableExtra(Shared.offer) as Offer
         val user = offer.transport!!.owner!!
 
-        v_avatar.src = user.avatar
+        v_image.src = user.avatar
         v_rating.text = user.rating
         v_phone.text = user.phone
         v_name.text = user.name

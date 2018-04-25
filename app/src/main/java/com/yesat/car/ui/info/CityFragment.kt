@@ -9,8 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.yesat.car.R
 import com.yesat.car.model.Location
-import com.yesat.car.ui.common.ListFragment
-import com.yesat.car.utility.Shared
+import com.yesat.car.utility.ui.ListFragment
 import com.yesat.car.utility.put2
 import com.yesat.car.utility.run2
 import com.yesat.car.utility.snack

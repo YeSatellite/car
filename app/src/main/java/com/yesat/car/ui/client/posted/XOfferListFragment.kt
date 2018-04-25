@@ -9,7 +9,7 @@ import com.yesat.car.R
 import com.yesat.car.model.Offer
 import com.yesat.car.model.Order
 import com.yesat.car.ui.client.posted.XOfferListActivity.Companion.COURIER_OFFER_PROFILE
-import com.yesat.car.ui.common.ListFragment
+import com.yesat.car.utility.ui.ListFragment
 import com.yesat.car.utility.*
 import kotlinx.android.synthetic.main.tmp_offer_item.view.*
 

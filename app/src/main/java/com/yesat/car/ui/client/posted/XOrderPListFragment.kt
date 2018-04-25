@@ -6,7 +6,7 @@ import android.graphics.Paint
 import android.support.v4.widget.SwipeRefreshLayout
 import com.yesat.car.R
 import com.yesat.car.model.Order
-import com.yesat.car.ui.common.ListFragment
+import com.yesat.car.utility.ui.ListFragment
 import com.yesat.car.utility.*
 import kotlinx.android.synthetic.main.item_posted_order.view.*
 import kotlinx.android.synthetic.main.tmp_order_item.view.*

@@ -36,7 +36,8 @@ class User : Serializable {
             |   name=$name,
             |   city=$city,
             |   citizenship=$citizenship,
-            |   dob=$dob, type=$type,
+            |   dob=$dob,
+            |   type=$type,
             |   avatar=$avatar,
             |   experience=$experience,
             |   rating=$rating,
@@ -46,10 +47,10 @@ class User : Serializable {
 
 
     companion object {
-        val CLIENT = "client"
-        val CARRIER = "carrier"
+        const val CLIENT = "client"
+        const val COURIER = "courier"
 
-        public fun fromJson(json: String): User {
+        fun fromJson(json: String): User {
             return Gson().fromJson(json, User::class.java)
         }
     }

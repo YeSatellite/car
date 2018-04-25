@@ -2,7 +2,6 @@ package com.yesat.car.ui
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +10,6 @@ import com.example.yesat.startkotlin.model.Contact
 import com.yesat.car.R
 import com.yesat.car.utility.Api
 import com.yesat.car.utility.setOnRefreshListenerAuto
-import com.yesat.car.ui.common.ContactsAdapter
-import kotlinx.android.synthetic.main.fragment_contacts.view.*
 import kotlinx.android.synthetic.main.tmp_recycler_view.view.*
 
 
