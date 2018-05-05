@@ -60,7 +60,7 @@ class TransportNewActivity : AppCompatActivity() {
 
         v_shipping_type.setOnClickListener {
             val i = Intent(this@TransportNewActivity, InfoTmpActivity::class.java)
-            Shared.call= Api.infoService.tShppingType()
+            Shared.call= Api.infoService.tShippingType()
             startActivityForResult(i, SHIPPING_TYPE_REQUEST_CODE)
         }
 

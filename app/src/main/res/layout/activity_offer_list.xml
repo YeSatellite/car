@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/fragment"
-        android:name="com.yesat.car.ui.courier.posted.XOfferListFragment"
+        android:name="com.yesat.car.ui.client.posted.XOfferListFragment"
         android:layout_width="match_parent"
         android:layout_height="399dp"
         tools:layout="@layout/tmp_recycler_view" />

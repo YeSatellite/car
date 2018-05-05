@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import com.yesat.car.R
 import com.yesat.car.model.Order
 import com.yesat.car.ui.client.XOrderDetailActivity
+import com.yesat.car.ui.courier.OfferNewActivity
 import com.yesat.car.utility.*
 import com.yesat.car.utility.ui.ListFragment
 import kotlinx.android.synthetic.main.item_posted_order.view.*
@@ -54,8 +55,8 @@ class YOrderPListFragment : ListFragment<Order, YOrderPListFragment.ViewHolder>(
         holder.hComment.text = item.comment
         holder.hShowOffers.paintFlags = holder.hShowOffers.paintFlags or Paint.UNDERLINE_TEXT_FLAG
         holder.hShowOffers.setOnClickListener({
-            val i = Intent(activity, XOfferListActivity::class.java)
-            i.putExtra(Shared.order,item)
+            val i = Intent(activity, OfferNewActivity::class.java)
+            i.put2(item)
             startActivityForResult(i, OFFER_LIST_ACTIVITY)
         })
         holder.hOrderDetail.setOnClickListener {

@@ -78,12 +78,15 @@ object Api {
         @GET("$path/category/")
         fun category(): Call<List<Category>>
 
+        @GET("$path/other-type/")
+        fun otherType(): Call<List<InfoTmp>>
+
 
         @GET("$path/$transport/type/")
         fun tType(): Call<List<InfoTmp>>
 
         @GET("$path/$transport/shipping-type/")
-        fun tShppingType(): Call<List<InfoTmp>>
+        fun tShippingType(): Call<List<InfoTmp>>
 
         @GET("$path/$transport/mark/")
         fun tMark(): Call<List<InfoTmp>>
@@ -146,12 +149,8 @@ object Api {
         @GET("$path/order/")
         fun orders(@Query("status") status: String): Call<List<Order>>
 
-//        @POST("$path/order/")
-//        fun orderAdd(@Body order: Order): Call<Order>
-
-        @GET("$path/order/{id}/offers/")
-        fun offers(@Path("id") orderId: Long): Call<List<Offer>>
-
+        @POST("$path/order/{id}/offer/")
+        fun offerAdd(@Path("id") orderId: Long,@Body offer: Offer): Call<Offer>
 
     }
 

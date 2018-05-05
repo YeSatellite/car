@@ -42,6 +42,9 @@
         <activity android:name=".ui.auth.RegisterActivity" />
         <activity android:name=".ui.auth.ClientRegisterActivity" />
         <activity android:name=".ui.auth.CourierRegisterActivity" />
+        <activity android:name=".ui.courier.transport.TransportListActivity" />
+        <activity android:name=".ui.client.posted.XOfferListActivity" />
+        <activity android:name=".ui.courier.OfferNewActivity" />
     </application>
 
 </manifest>

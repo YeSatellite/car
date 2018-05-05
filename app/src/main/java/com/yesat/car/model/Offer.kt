@@ -9,6 +9,10 @@ class Offer : Serializable {
     @Expose var id: Long? = null
 
     @Expose var transport: Transport? = null
+        set(value) {
+            field = value
+            transportId = value!!.id
+        }
     @SerializedName("transport_id")
     @Expose var transportId: Long? = null
 

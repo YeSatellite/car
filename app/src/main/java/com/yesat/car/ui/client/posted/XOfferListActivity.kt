@@ -29,11 +29,6 @@ class XOfferListActivity : AppCompatActivity() {
         norm("Hello2")
     }
 
-    override fun onResume() {
-        super.onResume()
-        norm("Hello4")
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == COURIER_OFFER_PROFILE){
             if (resultCode == Activity.RESULT_OK){
