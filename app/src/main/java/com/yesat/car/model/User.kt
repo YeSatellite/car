@@ -1,19 +1,14 @@
 package com.yesat.car.model
 
-import android.util.Log
-
 import com.google.gson.Gson
 import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
-
 import java.io.Serializable
 
-class User : Serializable {
+abstract class User : Serializable {
 
     @Expose var id: Long? = null
     @Expose var phone: String? = null
     @Expose var name: String? = null
-    @Expose var city: Location? = null
     @Expose var citizenship: String? = null
     @Expose var dob: String? = null
     @Expose var type: String? = null
@@ -22,8 +17,6 @@ class User : Serializable {
     @Expose var rating: String? = null
     @Expose var token: String? = null
 
-    constructor()
-
     fun toJson(): String {
         val gson = Gson()
         return gson.toJson(this)
@@ -31,10 +24,9 @@ class User : Serializable {
 
     override fun toString(): String {
         return """
-            |User(id=$id,
+            |User1(id=$id,
             |   phone=$phone,
             |   name=$name,
-            |   city=$city,
             |   citizenship=$citizenship,
             |   dob=$dob,
             |   type=$type,
@@ -50,8 +42,17 @@ class User : Serializable {
         const val CLIENT = "client"
         const val COURIER = "courier"
 
-        fun fromJson(json: String): User {
-            return Gson().fromJson(json, User::class.java)
+        fun fromJson(json: String): User1 {
+            return Gson().fromJson(json, User1::class.java)
         }
     }
+
+}
+
+class User1 : User() {
+    @Expose var city: Location? = null
+}
+
+class User2 : User() {
+    @Expose var city: Long? = null
 }

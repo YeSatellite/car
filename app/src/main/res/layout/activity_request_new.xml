@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_height="match_parent"
-android:layout_width="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
 
     <ScrollView
         android:id="@+id/scrollView3"
@@ -14,8 +12,7 @@ android:layout_width="match_parent">
         app:layout_constraintBottom_toTopOf="@+id/v_accept"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context="com.yesat.car.ui.RequestNewActivity">
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <android.support.v7.widget.CardView
@@ -33,7 +30,7 @@ android:layout_width="match_parent">
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/editText3"
+                    android:id="@+id/v_price"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginBottom="10dp"
@@ -45,7 +42,7 @@ android:layout_width="match_parent">
                     android:singleLine="false" />
 
                 <EditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/v_transport"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginBottom="10dp"
@@ -56,93 +53,62 @@ android:layout_width="match_parent">
                     android:padding="5dp"
                     android:singleLine="false" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/_text_view"
-                        style="@style/AppTheme.SimpleText"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="TextView" />
-
-                    <ImageView
-                        android:id="@+id/imageView5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@android:drawable/ic_menu_add" />
-
-
-                </LinearLayout>
-
                 <TextView
-                    android:id="@+id/textView8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textColor="@android:color/black" />
 
-                <LinearLayout
+                <EditText
+                    android:id="@+id/v_payment_type"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/v_title"
-                        style="@style/AppTheme.SimpleText"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="TextView" />
-
-                    <ImageView
-                        android:id="@+id/imageView7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@android:drawable/ic_menu_add" />
-
-                </LinearLayout>
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/et_bg"
+                    android:ems="10"
+                    android:hint="@string/test_text_s"
+                    android:inputType="textPersonName"
+                    android:padding="5dp"
+                    android:singleLine="false" />
 
                 <TextView
-                    android:id="@+id/v_end_point"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textColor="@android:color/black" />
 
-                <LinearLayout
+                <EditText
+                    android:id="@+id/v_other_service"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/v_start_point"
-                        style="@style/AppTheme.SimpleText"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="TextView" />
-
-                    <ImageView
-                        android:id="@+id/imageView8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@android:drawable/ic_menu_add" />
-
-                </LinearLayout>
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/et_bg"
+                    android:ems="10"
+                    android:hint="@string/test_text_s"
+                    android:inputType="textPersonName"
+                    android:padding="5dp"
+                    android:singleLine="false" />
 
                 <TextView
-                    android:id="@+id/textView33"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textColor="@android:color/black" />
+
+                <EditText
+                    android:id="@+id/v_shipping_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/et_bg"
+                    android:ems="10"
+                    android:hint="@string/test_text_s"
+                    android:inputType="textPersonName"
+                    android:padding="5dp"
+                    android:singleLine="false" />
 
                 <EditText
                     android:id="@+id/editText"

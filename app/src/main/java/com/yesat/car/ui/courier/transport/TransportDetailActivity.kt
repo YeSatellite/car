@@ -1,16 +1,13 @@
 package com.yesat.car.ui.courier.transport
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.animation.AnimationUtils
-import android.widget.ImageView
 import com.yesat.car.R
 import com.yesat.car.model.Transport
 import com.yesat.car.utility.get2
 import com.yesat.car.utility.src
 import kotlinx.android.synthetic.main.activity_transport_detail.*
-import android.widget.LinearLayout
-
 
 
 class TransportDetailActivity : AppCompatActivity() {

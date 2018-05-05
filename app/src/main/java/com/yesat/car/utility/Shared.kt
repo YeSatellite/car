@@ -1,12 +1,11 @@
 package com.yesat.car.utility
 
-import android.app.Activity
-import android.content.Context
 import android.content.SharedPreferences
-import android.net.Uri
-import android.provider.MediaStore
 import android.util.Log
+import com.yesat.car.model.InfoTmp
 import com.yesat.car.model.User
+import com.yesat.car.model.User1
+import retrofit2.Call
 
 object Shared {
     private const val tagPrefix = "xxx"
@@ -22,15 +21,17 @@ object Shared {
     const val offer = "order"
     const val transport = "transport"
     const val city = "city"
-    const val paymentType = "paymentType"
+    const val infoTmp = "infoTmp"
     const val category = "category"
 
     const val posted = "posted"
     const val active = "active"
 
+    var call: Call<List<InfoTmp>>? = null
+
     var preferences: SharedPreferences? = null
         private set
-    var currentUser = User()
+    var currentUser = User1()
         set(value) {
             field = value
             val editor = preferences!!.edit()
@@ -45,6 +46,10 @@ object Shared {
 
     fun Any.norm(text: String?) {
         Log.d(Shared.Tag.norm,text)
+    }
+
+    fun Any.hana(text: String?, t: Throwable? = null) {
+        Log.e(Shared.Tag.norm,text,t)
     }
 }
 

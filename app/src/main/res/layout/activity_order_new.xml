@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content">
 
                 <android.support.v4.view.ViewPager
-                    android:id="@+id/images"
+                    android:id="@+id/v_images"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -233,6 +233,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:focusable="false"
                     android:hint="@string/test_text_s"
                     android:inputType="date"
                     android:paddingEnd="10dp"
@@ -244,6 +245,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:focusable="false"
                     android:hint="@string/test_text_s"
                     android:inputType="datetime"
                     android:paddingEnd="10dp"

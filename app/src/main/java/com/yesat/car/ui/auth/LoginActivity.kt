@@ -26,7 +26,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login(phone:String, smsCode:String){
-        val map = hashMapOf("phone" to phone,"sms_code" to smsCode)
+        val map = hashMapOf(
+                "phone" to phone,
+                "sms_code" to smsCode,
+                "phone_type" to "Android",
+                "registrations_id" to "test")
         Api.authService.login(map).run2(this,{user ->
             Shared.currentUser = user
             val status = clientOrCourier()

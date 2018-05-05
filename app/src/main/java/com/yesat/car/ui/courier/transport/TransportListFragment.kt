@@ -12,9 +12,14 @@ import com.yesat.car.utility.ui.ListFragment
 import kotlinx.android.synthetic.main.item_transport.view.*
 
 
-class TrasportListFragment : ListFragment<Transport, TrasportListFragment.ViewHolder>() {
+class TransportListFragment : ListFragment<Transport, TransportListFragment.ViewHolder>() {
     companion object {
         const val TRANSPORT_NEW_ACTIVITY = 25
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val v = super.onCreateView(inflater, container, savedInstanceState)
+        return v
     }
 
     override fun refreshListener(adapter: ListAdapter, srRefresh: SwipeRefreshLayout) {
@@ -63,8 +68,8 @@ class TrasportListFragment : ListFragment<Transport, TrasportListFragment.ViewHo
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.new_order -> {
-//                val i = Intent(activity, CategoryActivity::class.java)
-//                startActivityForResult(i,TRANSPORT_NEW_ACTIVITY)
+                val i = Intent(activity, TransportNewActivity::class.java)
+                startActivityForResult(i,TRANSPORT_NEW_ACTIVITY)
                 true
             }
             else -> super.onOptionsItemSelected(item)

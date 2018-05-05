@@ -6,19 +6,24 @@ import android.os.Handler
 import android.support.v4.widget.SwipeRefreshLayout
 import android.util.Log
 import com.yesat.car.model.*
+import com.yesat.car.utility.Shared.hana
 import com.yesat.car.utility.Shared.norm
+import okhttp3.MediaType
+import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
+import java.io.File
 
 
 object Api {
     private val retrofit = Retrofit.Builder()
-            .baseUrl("http://yesatellite.pythonanywhere.com/")
+            .baseUrl("http://188.166.50.157:8000/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(OkHttpClient.Builder().addInterceptor { chain ->
                 var request = chain.request().newBuilder()
@@ -36,10 +41,16 @@ object Api {
         }
 
         @POST("$path/register/")
-        fun register(@Body user: User): Call<User>
+        fun register(@Body user: User2): Call<User2>
+
+        @Multipart
+        @PATCH("{type}/{type}s/current/")
+        fun registerAvatar(
+                @Path("type") type: String,
+                @Part image: MultipartBody.Part): Call<User>
 
         @POST("$path/login/")
-        fun login(@Body phone_sms: Map<String, String>): Call<User>
+        fun login(@Body phone_sms: Map<String, String>): Call<User1>
 
         @POST("$path/sent-sms/")
         fun sentSms(@Body phone: Map<String, String>): Call<Any>
@@ -49,13 +60,14 @@ object Api {
     interface InfoService {
         companion object {
             const val path = "info"
+            const val transport = "transport"
         }
 
         @GET("$path/city/")
         fun city(@Query("region") regionId: Long): Call<List<Location>>
 
         @GET("$path/region/")
-        fun region(@Query("country") countryId: Long): Call<List<InfoTmp>>
+        fun region(@Query("country/") countryId: Long): Call<List<InfoTmp>>
 
         @GET("$path/country/")
         fun country(): Call<List<InfoTmp>>
@@ -65,6 +77,22 @@ object Api {
 
         @GET("$path/category/")
         fun category(): Call<List<Category>>
+
+
+        @GET("$path/$transport/type/")
+        fun tType(): Call<List<InfoTmp>>
+
+        @GET("$path/$transport/shipping-type/")
+        fun tShppingType(): Call<List<InfoTmp>>
+
+        @GET("$path/$transport/mark/")
+        fun tMark(): Call<List<InfoTmp>>
+
+        @GET("$path/$transport/body/")
+        fun tBody(): Call<List<InfoTmp>>
+
+        @GET("$path/$transport/model/")
+        fun tModel(@Query("mark/") markId: Long): Call<List<InfoTmp>>
     }
 
     var clientService = retrofit.create(ClientService::class.java)!!
@@ -72,12 +100,20 @@ object Api {
         companion object {
             const val path = "client"
         }
+        @GET("$path/clients/current")
+        fun test(): Call<User1>
 
         @GET("$path/order/")
         fun orders(@Query("status") status: String): Call<List<Order>>
 
         @POST("$path/order/")
         fun orderAdd(@Body order: Order): Call<Order>
+
+        @Multipart
+        @PATCH("$path/order/{id}/")
+        fun orderUpdate(@Path("id") id: Long,
+                        @Part image1: MultipartBody.Part,
+                        @Part image2: MultipartBody.Part): Call<Order>
 
         @GET("$path/order/{id}/offers/")
         fun offers(@Path("id") orderId: Long): Call<List<Offer>>
@@ -93,9 +129,18 @@ object Api {
         companion object {
             const val path = "courier"
         }
+        @GET("$path/couriers/current")
+        fun test(): Call<User1>
 
         @GET("$path/transports/")
         fun transports(): Call<List<Transport>>
+        @POST("$path/transports/")
+        fun transportsAdd(@Body transport: Transport): Call<Transport>
+        @Multipart
+        @PATCH("$path/transports/{id}/")
+        fun transportsUpdate(@Path("id") id: Long,
+                        @Part image1: MultipartBody.Part,
+                        @Part image2: MultipartBody.Part): Call<Transport>
 
 
         @GET("$path/order/")
@@ -128,9 +173,18 @@ object Api {
     val ERROR_CODE = mapOf(
             100 to "Unknown error",
             101 to "phone already exist",
-            102 to "phone number is not correct"
+            102 to "phone number is not correct",
+            103 to "error 103",
+            104 to "error 104"
     )
 
+}
+
+fun <T> Call<T>.run3(context: Activity, ok: (body:T) -> Unit){
+    val pd = ProgressDialog(context)
+    pd.setTitle("Loading")
+    pd.show()
+    run586(this,ok,{ _, error ->  context.snack(error)},{pd.dismiss()})
 }
 
 fun <T> Call<T>.run2(context: Activity,
@@ -147,8 +201,7 @@ fun <T> Call<T>.run2(context: Activity,
 
 fun <T> Call<T>.run2(srRefresh: SwipeRefreshLayout,
                      ok: (body:T) -> Unit,
-                     fail: (code: Int, error: String) -> Unit
-){
+                     fail: (code: Int, error: String) -> Unit){
     run586(this,ok,fail,{srRefresh.isRefreshing = false})
 }
 
@@ -168,6 +221,9 @@ private fun <T> run586(call: Call<T>,
                     norm("body is null")
                 }
             } else {
+                if( response.code() == 401){
+                    fail(200, "fatal")
+                }
                 val bodyString = response.errorBody()?.string()
                 Log.e(Shared.Tag.norm, "error body: $bodyString\n" +
                         "error status: ${response.code()}")
@@ -178,9 +234,15 @@ private fun <T> run586(call: Call<T>,
         }
 
         override fun onFailure(call: Call<T>?, t: Throwable?) {
+            hana("<123>",t)
             fail(200, "Check your internet connection")
             stop()
         }
 
     })
+}
+
+fun File.toMultiPartImage(field: String): MultipartBody.Part {
+    val body = RequestBody.create(MediaType.parse("image/*"), this)
+    return MultipartBody.Part.createFormData(field, name, body)
 }

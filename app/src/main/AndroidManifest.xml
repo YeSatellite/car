@@ -14,29 +14,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.auth.SmsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.auth.SmsActivity" />
         <activity
             android:name=".ui.client.XMainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.client.posted.XOfferListActivity" />
-        <activity android:name=".ui.client.posted.CourierOfferPProfileActivity" />
+        <activity android:name=".ui.courier.posted.XOfferListActivity" />
+        <activity android:name=".ui.courier.posted.CourierOfferPProfileActivity" />
         <activity android:name=".ui.client.active.CourierOfferAProfileActivity" />
         <activity android:name=".ui.client.OrderNewActivity" />
         <activity android:name=".ui.info.LocationActivity" />
-        <activity android:name=".ui.info.PaymentTypeActivity" />
+        <activity android:name=".ui.info.InfoTmpActivity" />
         <activity android:name=".ui.client.CategoryActivity" />
         <activity android:name=".ui.client.XOrderDetailActivity" />
         <activity android:name=".ui.auth.LoginActivity" />
         <activity
             android:name=".ui.courier.YMainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.courier.transport.TransportDetailActivity"></activity>
+        <activity android:name=".ui.courier.transport.TransportDetailActivity" />
+        <activity android:name=".ui.courier.transport.TransportNewActivity" />
+        <activity android:name=".ui.auth.StartActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.auth.RegisterActivity" />
+        <activity android:name=".ui.auth.ClientRegisterActivity" />
+        <activity android:name=".ui.auth.CourierRegisterActivity" />
     </application>
 
 </manifest>

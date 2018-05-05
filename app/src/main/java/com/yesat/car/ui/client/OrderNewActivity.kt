@@ -3,8 +3,11 @@ package com.yesat.car.ui.client
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.view.PagerAdapter
@@ -21,11 +24,13 @@ import com.yesat.car.model.Category
 import com.yesat.car.model.InfoTmp
 import com.yesat.car.model.Location
 import com.yesat.car.model.Order
+import com.yesat.car.ui.info.InfoTmpActivity
 import com.yesat.car.ui.info.LocationActivity
-import com.yesat.car.ui.info.PaymentTypeActivity
 import com.yesat.car.utility.*
 import kotlinx.android.synthetic.main.activity_order_new.*
 import kotlinx.android.synthetic.main.tmp_order_image.view.*
+import java.io.File
+import java.util.*
 
 
 class OrderNewActivity : AppCompatActivity() {
@@ -36,7 +41,7 @@ class OrderNewActivity : AppCompatActivity() {
     }
 
 
-    private val imageList = ArrayList<Uri>()
+    private val images = ArrayList<File>()
     private val order = Order()
     private var imageNew: ImageView? = null
     private lateinit var adapter: CustomPagerAdapter
@@ -44,12 +49,13 @@ class OrderNewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_new)
+        askPermission(Manifest.permission.READ_EXTERNAL_STORAGE,750)
 
         order.category = intent.get2(Category::class.java).id
 
         adapter = CustomPagerAdapter(this)
-        images.adapter = adapter
-        images.onChange { position ->
+        v_images.adapter = adapter
+        v_images.onChange { position ->
             v_image_text.text = "${position+1}/2 image"
         }
 
@@ -67,16 +73,32 @@ class OrderNewActivity : AppCompatActivity() {
             startActivityForResult(i,END_POINT_REQUEST_CODE)
         })
         v_payment_type.setOnClickListener {
-            val i = Intent(this@OrderNewActivity,PaymentTypeActivity::class.java)
+            val i = Intent(this@OrderNewActivity,InfoTmpActivity::class.java)
+            Shared.call = Api.infoService.paymentType()
             startActivityForResult(i,PAYMENT_TYPE_REQUEST_CODE)
         }
-
+        v_shipping_date.setOnClickListener{
+            val calendar = Calendar.getInstance()
+            DatePickerDialog(this@OrderNewActivity,
+                    DatePickerDialog.OnDateSetListener {
+                        _, year, month, dayOfMonth ->
+                        v_shipping_date.text2 = "$year-$month-$dayOfMonth"
+                    }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                    calendar.get(Calendar.DAY_OF_MONTH)).show()
+        }
+        v_shipping_time.setOnClickListener{
+            TimePickerDialog(this@OrderNewActivity,
+                    TimePickerDialog.OnTimeSetListener {
+                        _, hourOfDay, minute ->
+                        v_shipping_time.text2 = "$hourOfDay:$minute"
+                    }, 0, 0, true).show()
+        }
         v_create.setOnClickListener({
             create()
         })
     }
 
-    fun create(){
+    private fun create(){
         try{
             order.title = v_title.get(getString(R.string.is_empty,"title"))
             order.comment = v_comment.get("comment is empty")
@@ -85,8 +107,8 @@ class OrderNewActivity : AppCompatActivity() {
             val length = v_length.get("length is empty").toFloat()
             order.volume = height*width*length/1000000
             order.mass = v_mass.get("mass is empty").toFloat()
-            if (order.startPoint == null) throw IllegalStateException("start point is empty")
-            if (order.endPoint == null) throw IllegalStateException("end point is empty")
+            check(order.startPoint != null){"start point is empty"}
+            check(order.endPoint != null){"end point is empty"}
             order.startDetail = v_start_detail.get("Start Detail is empty")
             order.endDetail = v_end_detail.get("Start Detail is empty")
             order.shippingDate = v_shipping_date.get("shipping date is empty")
@@ -96,12 +118,11 @@ class OrderNewActivity : AppCompatActivity() {
             order.ownerType = when(v_owner_type.checkedRadioButtonId){
                 R.id.v_natural_person -> 1
                 R.id.v_juridical_person -> 2
-                else -> throw IllegalStateException("select owner type")
+                else -> error("select owner type")
             }
 
-            Api.clientService.orderAdd(order).run2(this,{ _ ->
-                setResult(Activity.RESULT_OK, Intent())
-                finish()
+            Api.clientService.orderAdd(order).run2(this,{ body ->
+                updateImage(body.id!!)
             },{ _, error ->
                 snack(error)
             })
@@ -110,6 +131,20 @@ class OrderNewActivity : AppCompatActivity() {
             snack(ex.message ?: "Unknown error")
         }
     }
+
+    private fun updateImage(id: Long) {
+        val image1 = images[0].toMultiPartImage("image1")
+        val image2 = images[1].toMultiPartImage("image2")
+
+        Api.courierService.transportsUpdate(id,image1,image2).run2(this,{
+            setResult(Activity.RESULT_OK, Intent())
+            finish()
+        },{ _, error ->
+            snack(error)
+        })
+    }
+
+
 
 
 
@@ -143,10 +178,8 @@ class OrderNewActivity : AppCompatActivity() {
 
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
             val v = mLayoutInflater.inflate(R.layout.tmp_order_image, container, false)
-
-            val image = v.v_image
-            if(position < imageList.size)
-                image.setImageURI(imageList[position])
+            if(position < images.size)
+                v.v_image.setImageURI(Uri.fromFile(images[position]))
             container.addView(v)
             return v
         }
@@ -171,9 +204,9 @@ class OrderNewActivity : AppCompatActivity() {
                     }
                     else {
                         val imageUri = CropImage.getPickImageResultUri(this, data)
-                        imageList.add(imageUri)
+                        images.add(compressImage(imageUri))
                         adapter.notifyDataSetChanged()
-                        if (imageList.size == 2)
+                        if (images.size == 2)
                             imageNew!!.visibility = View.GONE
                     }
                 }
@@ -193,4 +226,24 @@ class OrderNewActivity : AppCompatActivity() {
             }
         }
     }
+
+
+    override fun onRequestPermissionsResult(requestCode: Int,
+                                            permissions: Array<String>, grantResults: IntArray) {
+        when (requestCode) {
+            750 -> if ((grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED))
+                finish()
+            else ->{}
+
+        }
+    }
 }
+
+
+
+
+
+
+
+
+

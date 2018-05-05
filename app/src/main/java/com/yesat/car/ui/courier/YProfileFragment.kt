@@ -1,28 +1,32 @@
-package com.yesat.car.ui.client
+package com.yesat.car.ui.courier
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.*
 import com.yesat.car.R
-import com.yesat.car.model.User
+import com.yesat.car.model.User1
 import com.yesat.car.utility.Shared
 import com.yesat.car.utility.Shared.norm
-import kotlinx.android.synthetic.main.fragment_client_profile.view.*
+import com.yesat.car.utility.src
+import kotlinx.android.synthetic.main.fragment_courier_profile.view.*
 
-class ClientProfileFragment : Fragment() {
+class YProfileFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val v =  inflater.inflate(R.layout.fragment_client_profile, container, false)
-
+        val v =  inflater.inflate(R.layout.fragment_courier_profile, container, false)
         (activity as AppCompatActivity).setSupportActionBar(v.toolbar)
         setHasOptionsMenu(true)
 
         val user = Shared.currentUser
         norm(user.toString())
 
+        v.v_image.src = user.avatar
+        v.v_rating.text = user.rating
         v.v_phone.text = user.phone
         v.v_name.text = user.name
+        v.v_experience.text = user.experience
+        v.v_citizenship.text = user.citizenship
         v.v_city.text = user.city?.name
         v.v_dob.text = user.dob
 
@@ -37,7 +41,7 @@ class ClientProfileFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.logout -> {
-                Shared.currentUser = User()
+                Shared.currentUser = User1()
                 activity!!.finish()
                 true
             }

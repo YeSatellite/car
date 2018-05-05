@@ -12,7 +12,7 @@ import java.io.Serializable
 class Transport : Serializable {
     @Expose var id: Long? = null
 
-    @Expose var owner: User? = null
+    @Expose var owner: User1? = null
 
     @Expose var type: Long? = null
     @SerializedName("type_name")
@@ -23,6 +23,7 @@ class Transport : Serializable {
     @Expose var modelName: String? = null
     @SerializedName("mark_name")
     @Expose var markName: String? = null
+    var mark: Long? = null
 
     @Expose var body: Long? = null
     @SerializedName("body_name")

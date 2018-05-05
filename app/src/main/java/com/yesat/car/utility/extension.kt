@@ -3,15 +3,21 @@ package com.yesat.car.utility
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Paint
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.net.Uri
+import android.os.Build
 import android.provider.MediaStore
+import android.support.annotation.RequiresApi
 import android.support.design.internal.BottomNavigationItemView
 import android.support.design.internal.BottomNavigationMenuView
 import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.Snackbar
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v4.widget.SwipeRefreshLayout
 import android.util.Log
@@ -21,6 +27,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
 import com.yesat.car.utility.Shared.norm
+import java.io.File
+import java.io.FileOutputStream
 import java.io.Serializable
 
 fun Activity.snack(text: String){
@@ -58,16 +66,20 @@ fun SwipeRefreshLayout.setOnRefreshListenerAuto(listener: () -> Unit){
 }
 
 
-fun Activity.getPath(uri: Uri): String {
-    val projection = arrayOf(MediaStore.Images.Media.DATA)
-    val cursor = this.managedQuery(uri, projection, null, null, null)
-    val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-    cursor.moveToFirst()
-    return cursor.getString(columnIndex)
+fun Activity.compressImage(uri: Uri): File {
+    val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
+
+    val file = File(cacheDir,  "${System.currentTimeMillis()}.jpg")
+    val os = FileOutputStream(file)
+    bitmap.compress(Bitmap.CompressFormat.PNG, 0, os)
+    os.flush()
+    os.close()
+
+    return file
 }
 
 fun EditText.get(error: String = ""): String{
-    val text = this.text.toString()
+    val text = this.text.toString().trim()
     if (error.isNotBlank() && text.isBlank())
         throw IllegalStateException(error)
     return text
@@ -112,7 +124,18 @@ var EditText.text2 : String
     }
 
 
+fun Activity.askPermission(permission: String,requestCode: Int){
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (ContextCompat.checkSelfPermission(this, permission)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
+        }
+    }
+}
 
+fun Activity.permissionsResult(grantResults: IntArray): Boolean {
+    return grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
+}
 
 
 

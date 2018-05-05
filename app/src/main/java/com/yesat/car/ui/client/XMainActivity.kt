@@ -14,7 +14,7 @@ class XMainActivity : AppCompatActivity() {
         val selectedFragment = when (item.itemId) {
             R.id.navigation_home -> Contacts2Fragment()
             R.id.navigation_dashboard -> XOrderFragment()
-            R.id.navigation_notifications -> ClientProfileFragment()
+            R.id.navigation_notifications -> XProfileFragment()
             else -> {
                 ContactsFragment()
             }
