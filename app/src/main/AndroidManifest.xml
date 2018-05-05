@@ -45,6 +45,7 @@
         <activity android:name=".ui.courier.transport.TransportListActivity" />
         <activity android:name=".ui.client.posted.XOfferListActivity" />
         <activity android:name=".ui.courier.OfferNewActivity" />
+        <activity android:name=".ui.courier.OfferDetailActivity"></activity>
     </application>
 
 </manifest>

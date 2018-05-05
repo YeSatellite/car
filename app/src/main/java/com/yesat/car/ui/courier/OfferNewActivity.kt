@@ -98,7 +98,7 @@ class OfferNewActivity : AppCompatActivity() {
                 SHIPPING_TYPE_REQUEST_CODE -> {
                     val shippingType =  data!!.get2(InfoTmp::class.java)
                     offer.shippingType = shippingType.id
-                    v_other_service.text2 = shippingType.name!!
+                    v_shipping_type.text2 = shippingType.name!!
                 }
             }
         }

@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.yesat.car.R
 import com.yesat.car.model.Transport
-import com.yesat.car.ui.client.OrderNewActivity
 import com.yesat.car.utility.*
 import com.yesat.car.utility.ui.ListActivity
 import com.yesat.car.utility.ui.ListFragment

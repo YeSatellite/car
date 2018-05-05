@@ -87,7 +87,10 @@ fun EditText.get(error: String = ""): String{
 
 var ImageView.src : String?
     get() = ""
-    set(value) = Picasso.get().load(value).into(this)
+    set(value){
+        norm(value)
+        Picasso.get().load(value).into(this)
+    }
 
 
 var TextView.link : Boolean

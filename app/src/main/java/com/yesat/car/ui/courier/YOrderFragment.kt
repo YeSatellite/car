@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.yesat.car.R
 import com.yesat.car.ui.ContactsFragment
-import com.yesat.car.ui.courier.posted.YOrderPListFragment
 import kotlinx.android.synthetic.main.tmp_pager.view.*
 
 class YOrderFragment : Fragment() {
@@ -42,8 +41,8 @@ class YOrderFragment : Fragment() {
         override fun getItem(position: Int): Fragment? {
             return when (position) {
                 0 -> YOrderPListFragment()
-                1 -> ContactsFragment()
-                2 -> ContactsFragment()
+                1 -> YOrderWListFragment()
+                2 -> YOrderAListFragment()
                 else -> null
             }
         }

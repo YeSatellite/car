@@ -149,6 +149,9 @@ object Api {
         @GET("$path/order/")
         fun orders(@Query("status") status: String): Call<List<Order>>
 
+        @GET("$path/order/{id}/offer/")
+        fun offer(@Path("id") orderId: Long): Call<Offer>
+
         @POST("$path/order/{id}/offer/")
         fun offerAdd(@Path("id") orderId: Long,@Body offer: Offer): Call<Offer>
 

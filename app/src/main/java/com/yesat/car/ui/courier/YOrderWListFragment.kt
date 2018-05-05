@@ -1,4 +1,4 @@
-package com.yesat.car.ui.courier.posted
+package com.yesat.car.ui.courier
 
 import android.app.Activity
 import android.content.Intent
@@ -10,24 +10,23 @@ import android.view.ViewGroup
 import com.yesat.car.R
 import com.yesat.car.model.Order
 import com.yesat.car.ui.client.XOrderDetailActivity
-import com.yesat.car.ui.courier.OfferNewActivity
 import com.yesat.car.utility.*
 import com.yesat.car.utility.ui.ListFragment
 import kotlinx.android.synthetic.main.item_posted_order.view.*
 import kotlinx.android.synthetic.main.tmp_order_item.view.*
 
 
-class YOrderPListFragment : ListFragment<Order, YOrderPListFragment.ViewHolder>() {
+class YOrderWListFragment : ListFragment<Order, YOrderWListFragment.ViewHolder>() {
     companion object {
         const val OFFER_LIST_ACTIVITY = 25
     }
 
     override fun refreshListener(adapter: ListAdapter, srRefresh: SwipeRefreshLayout) {
-        Api.courierService.orders(Shared.posted).run2(srRefresh,{body ->
+        Api.courierService.orders(Shared.waiting).run2(srRefresh,{body ->
             adapter.list = body
             adapter.notifyDataSetChanged()
         },{ _, error ->
-            activity!!.snack(error)
+            activity?.snack(error)
         })
     }
 
@@ -55,16 +54,18 @@ class YOrderPListFragment : ListFragment<Order, YOrderPListFragment.ViewHolder>(
         holder.hComment.text = item.comment
         holder.hShowOffers.paintFlags = holder.hShowOffers.paintFlags or Paint.UNDERLINE_TEXT_FLAG
         holder.hShowOffers.setOnClickListener({
-            val i = Intent(activity, OfferNewActivity::class.java)
-            i.put2(item)
-            startActivityForResult(i, OFFER_LIST_ACTIVITY)
+            Api.courierService.offer(item.id!!).run3(activity!!){body ->
+                val i = Intent(activity, OfferDetailActivity::class.java)
+                i.put2(body)
+                startActivityForResult(i, OFFER_LIST_ACTIVITY)
+            }
         })
         holder.hOrderDetail.setOnClickListener {
             val i = Intent(activity, XOrderDetailActivity::class.java)
             i.put2(item)
             startActivityForResult(i, OFFER_LIST_ACTIVITY)
         }
-        holder.hShowOffers.text = "new text"
+        holder.hShowOffers.text = "offer detail"
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

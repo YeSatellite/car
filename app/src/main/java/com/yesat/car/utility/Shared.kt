@@ -25,6 +25,7 @@ object Shared {
     const val category = "category"
 
     const val posted = "posted"
+    const val waiting = "waiting"
     const val active = "active"
 
     var call: Call<List<InfoTmp>>? = null
@@ -45,7 +46,7 @@ object Shared {
     }
 
     fun Any.norm(text: String?) {
-        Log.d(Shared.Tag.norm,text)
+        Log.d(Shared.Tag.norm,text ?: "null")
     }
 
     fun Any.hana(text: String?, t: Throwable? = null) {
