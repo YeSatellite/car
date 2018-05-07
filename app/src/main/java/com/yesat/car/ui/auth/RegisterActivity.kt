@@ -14,12 +14,16 @@ class RegisterActivity : AppCompatActivity() {
 
         v_client.setOnClickListener{
             val i = Intent(this, ClientRegisterActivity::class.java)
-            startActivity(i)
+            startActivityForResult(i,74)
         }
 
         v_courier.setOnClickListener{
             val i = Intent(this, CourierRegisterActivity::class.java)
-            startActivity(i)
+            startActivityForResult(i,23)
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        finish()
     }
 }

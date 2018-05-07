@@ -2,16 +2,15 @@ package com.yesat.car.utility
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Paint
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
-import android.support.annotation.RequiresApi
 import android.support.design.internal.BottomNavigationItemView
 import android.support.design.internal.BottomNavigationMenuView
 import android.support.design.widget.BottomNavigationView
@@ -20,6 +19,7 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v4.widget.SwipeRefreshLayout
+import android.text.format.DateFormat
 import android.util.Log
 import android.view.View
 import android.widget.EditText
@@ -139,9 +139,6 @@ fun Activity.askPermission(permission: String,requestCode: Int){
 fun Activity.permissionsResult(grantResults: IntArray): Boolean {
     return grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
 }
-
-
-
 
 
 

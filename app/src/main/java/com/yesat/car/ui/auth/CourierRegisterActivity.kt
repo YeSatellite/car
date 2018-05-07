@@ -7,25 +7,27 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.theartofdev.edmodo.cropper.CropImage
 import com.yesat.car.R
-import com.yesat.car.model.InfoTmp
-import com.yesat.car.model.Location
-import com.yesat.car.model.User
-import com.yesat.car.model.User2
+import com.yesat.car.model.*
 import com.yesat.car.ui.info.InfoTmpActivity
 import com.yesat.car.ui.info.LocationActivity
 import com.yesat.car.utility.*
 import kotlinx.android.synthetic.main.activity_courier_register.*
+import okhttp3.MediaType
 import java.io.File
 import java.util.*
+import okhttp3.RequestBody
+
+
 
 class CourierRegisterActivity : AppCompatActivity() {
     companion object {
         const val CITIZENSHIP_REQUEST_CODE = 57
         const val CITY_REQUEST_CODE = 86
         const val IMAGE_REQUEST_CODE = 96
+        const val FINISH_REQUEST_CODE = 100
     }
 
-    private val user = User2()
+    private val user = User()
     private var image: File? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,12 +74,22 @@ class CourierRegisterActivity : AppCompatActivity() {
             user.phone = v_phone.get("phone is empty")
             user.name = v_name.get("name is empty")
             user.dob = v_dob.get("dob is empty")
-            user.experience = v_experience.get("experience is empty")
+            user.experience = v_experience.get("experience is empty").toLong()
             checkNotNull(user.citizenship){"citizenship is empty"}
-            checkNotNull(user.city){"city is empty"}
+            checkNotNull(user.city?.id){"city is empty"}
 
-            Api.authService.register(user).run3(this,{body ->
-                updateImage(body.id!!)
+            val formData = MediaType.parse("multipart/form-data")
+            val phone = RequestBody.create(formData, user.phone!!)
+            val name = RequestBody.create(formData, user.name!!)
+            val city = RequestBody.create(formData, user.city!!.id.toString())
+            val citizenship = RequestBody.create(formData, user.citizenship!!)
+            val dob = RequestBody.create(formData, user.dob!!)
+            val type = RequestBody.create(formData, user.type!!)
+            val image = image!!.toMultiPartImage("avatar")
+            Api.authService.register(phone,name,city,citizenship,dob,type,image).run3(this,{
+                val i = Intent(this, LoginActivity::class.java)
+                i.put2(user.phone!!)
+                startActivityForResult(i,FINISH_REQUEST_CODE)
             })
 
 
@@ -95,7 +107,7 @@ class CourierRegisterActivity : AppCompatActivity() {
                 }
                 CITY_REQUEST_CODE -> {
                     val location = data!!.get2(Location::class.java)
-                    user.city = location.id
+                    user.city = location
                     v_city.text2 = locationFormat(location)
                 }
                 IMAGE_REQUEST_CODE -> {
@@ -105,21 +117,9 @@ class CourierRegisterActivity : AppCompatActivity() {
                 }
             }
         }
-    }
 
-    private fun updateImage(id: Long) {
-        val i = Intent(this, LoginActivity::class.java)
-        i.put2(user.phone!!)
-        startActivity(i)
-
-//        val image = image!!.toMultiPartImage("avatar")
-//
-//        Api.authService.registerAvatar(user.type!!,id,image).run2(this,{
-//            val i = Intent(this, LoginActivity::class.java)
-//            i.put2(user.phone!!)
-//            startActivity(i)
-//        },{ _, error ->
-//            snack(error)
-//        })
+        if(requestCode == FINISH_REQUEST_CODE){
+            finish()
+        }
     }
 }

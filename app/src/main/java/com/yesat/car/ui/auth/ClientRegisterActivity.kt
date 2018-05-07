@@ -9,20 +9,22 @@ import com.yesat.car.R
 import com.yesat.car.model.InfoTmp
 import com.yesat.car.model.Location
 import com.yesat.car.model.User
-import com.yesat.car.model.User2
 import com.yesat.car.ui.info.InfoTmpActivity
 import com.yesat.car.ui.info.LocationActivity
 import com.yesat.car.utility.*
 import kotlinx.android.synthetic.main.activity_client_register.*
+import okhttp3.MediaType
+import okhttp3.RequestBody
 import java.util.*
 
 class ClientRegisterActivity : AppCompatActivity() {
     companion object {
         const val CITIZENSHIP_REQUEST_CODE = 57
         const val CITY_REQUEST_CODE = 86
+        const val FINISH_REQUEST_CODE = 100
     }
 
-    private val user = User2()
+    private val user = User()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,10 +68,17 @@ class ClientRegisterActivity : AppCompatActivity() {
             checkNotNull(user.citizenship)
             checkNotNull(user.city)
 
-            Api.authService.register(user).run3(this,{body ->
+            val formData = MediaType.parse("multipart/form-data")
+            val phone = RequestBody.create(formData, user.phone!!)
+            val name = RequestBody.create(formData, user.name!!)
+            val city = RequestBody.create(formData, user.city!!.id.toString())
+            val citizenship = RequestBody.create(formData, user.citizenship!!)
+            val dob = RequestBody.create(formData, user.dob!!)
+            val type = RequestBody.create(formData, user.type!!)
+            Api.authService.register(phone,name,city,citizenship,dob,type).run3(this,{
                 val i = Intent(this, LoginActivity::class.java)
-                i.put2(body.phone!!)
-                startActivity(i)
+                i.put2(user.phone!!)
+                startActivityForResult(i,FINISH_REQUEST_CODE)
             })
 
 
@@ -87,10 +96,14 @@ class ClientRegisterActivity : AppCompatActivity() {
                 }
                 CITY_REQUEST_CODE -> {
                     val location = data!!.get2(Location::class.java)
-                    user.city = location.id
+                    user.city = location
                     v_city.text2 = locationFormat(location)
                 }
             }
+        }
+
+        if(requestCode == FINISH_REQUEST_CODE){
+            finish()
         }
     }
 }

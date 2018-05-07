@@ -9,7 +9,7 @@ class Order : Serializable {
 
     @Expose var id: Long? = null
 
-    @Expose var owner: User1? = null
+    @Expose var owner: User? = null
 
     @Expose var title: String? = null
 

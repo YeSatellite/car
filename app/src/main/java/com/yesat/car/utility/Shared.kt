@@ -4,7 +4,6 @@ import android.content.SharedPreferences
 import android.util.Log
 import com.yesat.car.model.InfoTmp
 import com.yesat.car.model.User
-import com.yesat.car.model.User1
 import retrofit2.Call
 
 object Shared {
@@ -32,7 +31,7 @@ object Shared {
 
     var preferences: SharedPreferences? = null
         private set
-    var currentUser = User1()
+    var currentUser = User()
         set(value) {
             field = value
             val editor = preferences!!.edit()

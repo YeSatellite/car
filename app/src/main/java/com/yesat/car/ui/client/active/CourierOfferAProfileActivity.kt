@@ -20,7 +20,7 @@ class CourierOfferAProfileActivity : AppCompatActivity() {
         v_rating.text = user.rating
         v_phone.text = user.phone
         v_name.text = user.name
-        v_experience.text = user.experience
+        v_experience.text = user.experience.toString()
         v_transport.text = offer.transport?.fullName
         v_citizenship.text = user.citizenship
         v_city.text = user.city?.name

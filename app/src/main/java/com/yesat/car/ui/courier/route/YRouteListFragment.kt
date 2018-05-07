@@ -1,4 +1,4 @@
-package com.yesat.car.ui.courier.transport
+package com.yesat.car.ui.courier.route
 
 import android.app.Activity
 import android.content.Intent
@@ -6,20 +6,22 @@ import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.view.*
 import com.yesat.car.R
-import com.yesat.car.model.Transport
+import com.yesat.car.model.Route
 import com.yesat.car.utility.*
+import com.yesat.car.utility.Shared.norm
 import com.yesat.car.utility.ui.ListFragment
 import com.yesat.car.utility.ui.ListToolbarFragment
-import kotlinx.android.synthetic.main.item_transport.view.*
+import kotlinx.android.synthetic.main.item_courier_route.view.*
 
 
-class TransportListFragment : ListToolbarFragment<Transport, TransportListFragment.ViewHolder>() {
+class YRouteListFragment : ListToolbarFragment<Route, YRouteListFragment.ViewHolder>() {
     companion object {
-        const val TRANSPORT_NEW_ACTIVITY = 25
+        const val ROUTE_NEW_ACTIVITY = 25
     }
 
     override fun refreshListener(adapter: ListAdapter, srRefresh: SwipeRefreshLayout) {
-        Api.courierService.transports().run2(srRefresh,{body ->
+        Api.courierService.routes().run2(srRefresh,{body ->
+            norm("count ${body.size}")
             adapter.list = body
             adapter.notifyDataSetChanged()
         },{ _, error ->
@@ -29,26 +31,24 @@ class TransportListFragment : ListToolbarFragment<Transport, TransportListFragme
 
     override fun onCreateViewHolder2(parent: ViewGroup): ViewHolder {
         val v = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_transport, parent, false)
+                .inflate(R.layout.item_courier_route, parent, false)
         return ViewHolder(v)
     }
 
     inner class ViewHolder(v: View) : ListFragment.ViewHolder(v){
-        val hImage = v.v_image!!
-        val hName = v.v_name!!
-        val hType= v.v_type!!
-        val hTransportDetail = v.v_transport_detail!!
+        val hStartPoint = v.v_start_point!!
+        val hEndPoint= v.v_end_point!!
+        val hPosition = v.v_position!!
+        val hTransport = v.v_transport!!
+        val hDate = v.v_date!!
 
     }
-    override fun onBindViewHolder2(holder: ViewHolder, item: Transport) {
-        holder.hImage.src = item.image1
-        holder.hName.text = item.fullName
-        holder.hType.text = item.typeName
-        holder.hTransportDetail.setOnClickListener {
-            val i = Intent(activity, TransportDetailActivity::class.java)
-            i.put2(item)
-            startActivityForResult(i, TRANSPORT_NEW_ACTIVITY)
-        }
+    override fun onBindViewHolder2(holder: ViewHolder, item: Route) {
+        holder.hStartPoint.text = locationFormat(item.startPoint!!)
+        holder.hEndPoint.text = locationFormat(item.endPoint!!)
+        holder.hPosition.text = definePosition(item.startPoint!!, item.endPoint!!)
+        holder.hTransport.text = "${item.transport?.modelName} ${item.transport?.modelName}"
+        holder.hDate.text = dateFormat()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,8 +64,8 @@ class TransportListFragment : ListToolbarFragment<Transport, TransportListFragme
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.new_order -> {
-                val i = Intent(activity, TransportNewActivity::class.java)
-                startActivityForResult(i,TRANSPORT_NEW_ACTIVITY)
+                val i = Intent(activity, RouteNewActivity::class.java)
+                startActivityForResult(i, ROUTE_NEW_ACTIVITY)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -74,7 +74,7 @@ class TransportListFragment : ListToolbarFragment<Transport, TransportListFragme
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == TRANSPORT_NEW_ACTIVITY) {
+        if (requestCode == ROUTE_NEW_ACTIVITY) {
             if (resultCode == Activity.RESULT_OK) {
                 refreshListener!!.onRefresh()
             }

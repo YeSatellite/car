@@ -25,7 +25,7 @@ class CityFragment(val call: Call<List<Location>>) : ListFragment<Location, City
             adapter.list = body
             adapter.notifyDataSetChanged()
         },{ _, error ->
-            activity!!.snack(error)
+            activity?.snack(error)
         })
     }
 

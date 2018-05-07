@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.*
 import com.yesat.car.R
-import com.yesat.car.model.User1
+import com.yesat.car.model.User
 import com.yesat.car.utility.Shared
 import com.yesat.car.utility.Shared.norm
 import kotlinx.android.synthetic.main.fragment_client_profile.view.*
@@ -29,14 +29,14 @@ class XProfileFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_client_profile, menu)
+        inflater.inflate(R.menu.menu_logout, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.logout -> {
-                Shared.currentUser = User1()
+                Shared.currentUser = User()
                 activity!!.finish()
                 true
             }

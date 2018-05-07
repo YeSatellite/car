@@ -14,6 +14,8 @@ import kotlinx.android.synthetic.main.tmp_recycler_view.view.*
 abstract class ListFragment<T,V : ListFragment.ViewHolder> : Fragment() {
     var refreshListener: SwipeRefreshLayout.OnRefreshListener? = null
 
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val v =  inflater.inflate(R.layout.tmp_recycler_view, container, false)

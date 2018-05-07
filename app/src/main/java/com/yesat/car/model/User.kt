@@ -4,7 +4,7 @@ import com.google.gson.Gson
 import com.google.gson.annotations.Expose
 import java.io.Serializable
 
-abstract class User : Serializable {
+class User : Serializable {
 
     @Expose var id: Long? = null
     @Expose var phone: String? = null
@@ -12,8 +12,9 @@ abstract class User : Serializable {
     @Expose var citizenship: String? = null
     @Expose var dob: String? = null
     @Expose var type: String? = null
+    @Expose var city: Location? = null
     @Expose var avatar: String? = null
-    @Expose var experience: String? = null
+    @Expose var experience: Long? = null
     @Expose var rating: String? = null
     @Expose var token: String? = null
 
@@ -24,7 +25,7 @@ abstract class User : Serializable {
 
     override fun toString(): String {
         return """
-            |User1(id=$id,
+            |User(id=$id,
             |   phone=$phone,
             |   name=$name,
             |   citizenship=$citizenship,
@@ -42,17 +43,9 @@ abstract class User : Serializable {
         const val CLIENT = "client"
         const val COURIER = "courier"
 
-        fun fromJson(json: String): User1 {
-            return Gson().fromJson(json, User1::class.java)
+        fun fromJson(json: String): User {
+            return Gson().fromJson(json, User::class.java)
         }
     }
 
-}
-
-class User1 : User() {
-    @Expose var city: Location? = null
-}
-
-class User2 : User() {
-    @Expose var city: Long? = null
 }

@@ -30,11 +30,5 @@ class TransportDetailActivity : AppCompatActivity() {
         v_image2.src = transport.image2
         v_comment.text = transport.comment
 
-        val animZoomIn = AnimationUtils.loadAnimation(applicationContext, R.anim.zoom_in)
-
-        v_image1.setOnClickListener {
-            v_image1.startAnimation(animZoomIn);
-        }
-
     }
 }

@@ -40,17 +40,20 @@ object Api {
             const val path = "auth"
         }
 
-        @POST("$path/register/")
-        fun register(@Body user: User2): Call<User2>
-
         @Multipart
-        @PATCH("{type}/{type}s/current/")
-        fun registerAvatar(
-                @Path("type") type: String,
-                @Part image: MultipartBody.Part): Call<User>
+        @POST("$path/register/")
+        fun register(
+                @Part("phone") email:RequestBody,
+                @Part("name") name:RequestBody,
+                @Part("city") city:RequestBody,
+                @Part("citizenship") citizenship:RequestBody,
+                @Part("dob") dob:RequestBody,
+                @Part("type") type:RequestBody,
+                @Part image: MultipartBody.Part? = null
+        ): Call<Any>
 
         @POST("$path/login/")
-        fun login(@Body phone_sms: Map<String, String>): Call<User1>
+        fun login(@Body phone_sms: Map<String, String>): Call<User>
 
         @POST("$path/sent-sms/")
         fun sentSms(@Body phone: Map<String, String>): Call<Any>
@@ -104,7 +107,7 @@ object Api {
             const val path = "client"
         }
         @GET("$path/clients/current")
-        fun test(): Call<User1>
+        fun test(): Call<User>
 
         @GET("$path/order/")
         fun orders(@Query("status") status: String): Call<List<Order>>
@@ -125,6 +128,13 @@ object Api {
         @POST("$path/order/{id}/offers/")
         fun offersAccept(@Path("id") orderId: Long,
                          @Part("offer") offerId: Long): Call<Any>
+
+        @GET("$path/routes/")
+        fun routes(@Query("type") type: Int,
+                   @Query("start_point") startPoint: Int,
+                   @Query("end_point") endPoint: Int,
+                   @Query("start_date") startDate: String,
+                   @Query("end_date") endDate: String): Call<List<Route>>
     }
 
     var courierService = retrofit.create(CourierService::class.java)!!
@@ -133,7 +143,7 @@ object Api {
             const val path = "courier"
         }
         @GET("$path/couriers/current")
-        fun test(): Call<User1>
+        fun test(): Call<User>
 
         @GET("$path/transports/")
         fun transports(): Call<List<Transport>>
@@ -154,6 +164,12 @@ object Api {
 
         @POST("$path/order/{id}/offer/")
         fun offerAdd(@Path("id") orderId: Long,@Body offer: Offer): Call<Offer>
+
+        @GET("$path/routes/")
+        fun routes(): Call<List<Route>>
+
+        @POST("$path/routes/")
+        fun routesAdd(@Body route: Route): Call<Route>
 
     }
 

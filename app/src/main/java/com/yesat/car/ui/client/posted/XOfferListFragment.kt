@@ -21,7 +21,7 @@ class XOfferListFragment : ListFragment<Offer, XOfferListFragment.ViewHolder>() 
             adapter.list = body
             adapter.notifyDataSetChanged()
         },{ _, error ->
-            activity!!.snack(error)
+            activity?.snack(error)
         })
     }
 

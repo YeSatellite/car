@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
         Api.authService.login(map).run2(this,{user ->
             Shared.currentUser = user
             val status = clientOrCourier()
-            startActivity(Intent(this, status))
+            startActivityForResult(Intent(this, status),77)
         },{ _, error ->
             snack(error)
         })

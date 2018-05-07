@@ -12,7 +12,7 @@ import java.io.Serializable
 class Transport : Serializable {
     @Expose var id: Long? = null
 
-    @Expose var owner: User1? = null
+    @Expose var owner: User? = null
 
     @Expose var type: Long? = null
     @SerializedName("type_name")

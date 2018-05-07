@@ -136,7 +136,7 @@ class OrderNewActivity : AppCompatActivity() {
         val image1 = images[0].toMultiPartImage("image1")
         val image2 = images[1].toMultiPartImage("image2")
 
-        Api.courierService.transportsUpdate(id,image1,image2).run2(this,{
+        Api.clientService.orderUpdate(id,image1,image2).run2(this,{
             setResult(Activity.RESULT_OK)
             finish()
         },{ _, error ->

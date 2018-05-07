@@ -22,7 +22,7 @@ class LocationFragment(val call: Call<List<InfoTmp>>) : ListFragment<InfoTmp, Lo
             adapter.list = body
             adapter.notifyDataSetChanged()
         },{ _, error ->
-            activity!!.snack(error)
+            activity?.snack(error)
         })
     }
 

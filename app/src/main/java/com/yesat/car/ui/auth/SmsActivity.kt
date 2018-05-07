@@ -13,6 +13,8 @@ class SmsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sms)
 
+        authTest()
+
         v_send_sms.setOnClickListener {
             try {
                 val phone = v_phone.get("phone is empty")
@@ -37,6 +39,14 @@ class SmsActivity : AppCompatActivity() {
         },{ _, error ->
             snack(error)
         })
+    }
+
+
+    private fun authTest() {
+        if (Shared.currentUser.token != null){
+            val status = clientOrCourier()
+            startActivity(Intent(this, status))
+        }
     }
 }
 

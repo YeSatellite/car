@@ -44,8 +44,11 @@
         <activity android:name=".ui.auth.CourierRegisterActivity" />
         <activity android:name=".ui.courier.transport.TransportListActivity" />
         <activity android:name=".ui.client.posted.XOfferListActivity" />
-        <activity android:name=".ui.courier.OfferNewActivity" />
-        <activity android:name=".ui.courier.OfferDetailActivity"></activity>
+        <activity android:name=".ui.courier.offer.OfferNewActivity" />
+        <activity android:name=".ui.courier.offer.OfferDetailActivity" />
+        <activity android:name=".ui.courier.route.RouteNewActivity" />
+        <activity android:name=".ui.client.CourierProfileActivity"></activity>
+        <activity android:name=".ui.client.RouteFilterActivity" />
     </application>
 
 </manifest>

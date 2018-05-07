@@ -12,7 +12,7 @@ class XMainActivity : AppCompatActivity() {
 
     private val navListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         val selectedFragment = when (item.itemId) {
-            R.id.navigation_home -> Contacts2Fragment()
+            R.id.navigation_home -> XRouteListFragment()
             R.id.navigation_dashboard -> XOrderFragment()
             R.id.navigation_notifications -> XProfileFragment()
             else -> {
@@ -30,5 +30,6 @@ class XMainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_client_main)
 
         v_navigation.setOnNavigationItemSelectedListener(navListener)
+        v_navigation.selectedItemId = R.id.navigation_home
     }
 }
