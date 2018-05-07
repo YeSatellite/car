@@ -10,8 +10,6 @@ import com.yesat.car.R
 import com.yesat.car.model.InfoTmp
 import com.yesat.car.model.Location
 import com.yesat.car.model.Route
-import com.yesat.car.model.Transport
-import com.yesat.car.ui.courier.transport.TransportListActivity
 import com.yesat.car.ui.info.InfoTmpActivity
 import com.yesat.car.ui.info.LocationActivity
 import com.yesat.car.utility.*
@@ -62,24 +60,25 @@ class RouteFilterActivity : AppCompatActivity() {
             startActivityForResult(i,TYPE_REQUEST_CODE)
         }
         v_add.setOnClickListener{
-            create()
+            filter()
         }
 
     }
 
 
-    private fun create(){
+    private fun filter(){
         try{
-            check(route.startPoint != null){getString(R.string.is_empty,"start point")}
-            check(route.endPoint != null){getString(R.string.is_empty,"end point")}
-            route.shippingDate = v_shipping_date.get(getString(R.string.is_empty,"shipping date"))
-            route.shippingTime = v_shipping_time.get(getString(R.string.is_empty,"shipping time"))
-            checkNotNull(route.transport){getString(R.string.is_empty,"transport")}
+            check(filter.startPoint != null){getString(R.string.is_empty,"start point")}
+            check(filter.endPoint != null){getString(R.string.is_empty,"end point")}
+            filter.startDate = v_start_date.get(getString(R.string.is_empty,"start date"))
+            filter.endDate = v_end_date.get(getString(R.string.is_empty,"end time"))
+            checkNotNull(filter.type){getString(R.string.is_empty,"transport type")}
 
-            Api.courierService.routesAdd(route).run3(this){
-                setResult(Activity.RESULT_OK)
-                finish()
-            }
+            val i = Intent()
+            i.put2(filter)
+            setResult(Activity.RESULT_OK)
+            finish()
+
 
         }catch (ex: IllegalStateException){
             snack(ex.message ?: "Unknown error")
@@ -94,16 +93,17 @@ class RouteFilterActivity : AppCompatActivity() {
                 START_POINT_REQUEST_CODE -> {
                     val startPoint = data!!.get2(Location::class.java)
                     filter.startPoint = startPoint.id
-                    v_start_point.text2 = locationFormat(startPoint!!)
+                    v_start_point.text2 = locationFormat(startPoint)
                 }
                 END_POINT_REQUEST_CODE -> {
-                    route.endPoint = data!!.get2(Location::class.java)
-                    v_end_point.text2 = locationFormat(route.endPoint!!)
+                    val endPoint = data!!.get2(Location::class.java)
+                    filter.endPoint = endPoint.id
+                    v_end_point.text2 = locationFormat(endPoint)
                 }
                 TYPE_REQUEST_CODE -> {
-                    val transportType =  data!!.get2(InfoTmp::class.java)
-                    transport.type = transportType.id
-                    v_transport_type.text2 = transportType.name ?: ""
+                    val type =  data!!.get2(InfoTmp::class.java)
+                    filter.type = type.id
+                    v_type.text2 = type.name ?: ""
                 }
             }
         }
