@@ -12,12 +12,16 @@ import com.yesat.car.R
 import com.yesat.car.ui.client.XMainActivity
 import com.yesat.car.utility.*
 import kotlinx.android.synthetic.main.activity_login.*
+import com.google.firebase.iid.FirebaseInstanceId
+import com.yesat.car.utility.Shared.norm
+
 
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
         val phone = intent.get2(String::class.java)
         v_login.setOnClickListener({
             val sms = v_sms.get("sms is empty")
@@ -26,11 +30,13 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login(phone:String, smsCode:String){
+        val token = FirebaseInstanceId.getInstance().token!!
+        norm("my token $token")
         val map = hashMapOf(
                 "phone" to phone,
                 "sms_code" to smsCode,
                 "phone_type" to "Android",
-                "registrations_id" to "test")
+                "registration_id" to token)
         Api.authService.login(map).run2(this,{user ->
             Shared.currentUser = user
             val status = clientOrCourier()

@@ -48,11 +48,13 @@ class RouteFilterActivity : AppCompatActivity() {
                     calendar.get(Calendar.DAY_OF_MONTH)).show()
         }
         v_end_date.setOnClickListener{
-            TimePickerDialog(this@RouteFilterActivity,
-                    TimePickerDialog.OnTimeSetListener {
-                        _, hourOfDay, minute ->
-                        v_end_date.text2 = "$hourOfDay:$minute"
-                    }, 0, 0, true).show()
+            val calendar = Calendar.getInstance()
+            DatePickerDialog(this@RouteFilterActivity,
+                    DatePickerDialog.OnDateSetListener {
+                        _, year, month, dayOfMonth ->
+                        v_end_date.text2 = "$year-$month-$dayOfMonth"
+                    }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                    calendar.get(Calendar.DAY_OF_MONTH)).show()
         }
         v_type.setOnClickListener {
             val i = Intent(this@RouteFilterActivity, InfoTmpActivity::class.java)
@@ -76,7 +78,7 @@ class RouteFilterActivity : AppCompatActivity() {
 
             val i = Intent()
             i.put2(filter)
-            setResult(Activity.RESULT_OK)
+            setResult(Activity.RESULT_OK,i)
             finish()
 
 

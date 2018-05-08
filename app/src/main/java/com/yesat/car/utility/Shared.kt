@@ -1,5 +1,6 @@
 package com.yesat.car.utility
 
+import android.app.Activity
 import android.content.SharedPreferences
 import android.util.Log
 import com.yesat.car.model.InfoTmp
@@ -15,6 +16,12 @@ object Shared {
         const val info = "$tagPrefix<+>info"
     }
 
+    object Action {
+        const val acceptOffer = "accept_offer"
+        const val done = "done"
+        const val newOrder= "new_order"
+    }
+
     const val user = "user"
     const val order = "order"
     const val offer = "order"
@@ -22,6 +29,7 @@ object Shared {
     const val city = "city"
     const val infoTmp = "infoTmp"
     const val category = "category"
+    const val action = "action"
 
     const val posted = "posted"
     const val waiting = "waiting"
@@ -47,6 +55,12 @@ object Shared {
     fun Any.norm(text: String?) {
         Log.d(Shared.Tag.norm,text ?: "null")
     }
+
+    fun Any.norm(activity: Activity ,text: String?) {
+        Log.d(Shared.Tag.norm, "${activity::class.java.simpleName} @ $text")
+    }
+
+
 
     fun Any.hana(text: String?, t: Throwable? = null) {
         Log.e(Shared.Tag.norm,text,t)

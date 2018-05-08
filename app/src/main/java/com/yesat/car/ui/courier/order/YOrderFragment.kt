@@ -10,6 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yesat.car.R
+import com.yesat.car.utility.Shared
+import com.yesat.car.utility.Shared.norm
 import kotlinx.android.synthetic.main.tmp_pager.view.*
 
 class YOrderFragment : Fragment() {
@@ -24,6 +26,13 @@ class YOrderFragment : Fragment() {
         val tabs = v.tab_layout
         tabs.shouldExpand = true
         tabs.setViewPager(v.pager)
+
+        val action = (activity as AppCompatActivity).intent.getStringExtra(Shared.action)
+        norm(activity as AppCompatActivity,action)
+        v.pager.currentItem = when (action){
+            Shared.Action.acceptOffer -> 2
+            else -> 0
+        }
 
 
         return v

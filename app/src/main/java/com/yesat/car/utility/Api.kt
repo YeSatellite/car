@@ -130,9 +130,9 @@ object Api {
                          @Part("offer") offerId: Long): Call<Any>
 
         @GET("$path/routes/")
-        fun routes(@Query("type") type: Int,
-                   @Query("start_point") startPoint: Int,
-                   @Query("end_point") endPoint: Int,
+        fun routes(@Query("type") type: Long,
+                   @Query("start_point") startPoint: Long,
+                   @Query("end_point") endPoint: Long,
                    @Query("start_date") startDate: String,
                    @Query("end_date") endDate: String): Call<List<Route>>
     }

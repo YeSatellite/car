@@ -16,12 +16,23 @@ import kotlinx.android.synthetic.main.item_client_route.view.*
 
 class XRouteListFragment : ListToolbarFragment<Route, XRouteListFragment.ViewHolder>() {
     companion object {
-        const val ROUTE_NEW_ACTIVITY = 25
+        const val ROUTE_FILTER_ACTIVITY = 25
     }
 
+    var filter: Route.FilterRoute? = null
+
     override fun refreshListener(adapter: ListAdapter, srRefresh: SwipeRefreshLayout) {
+        if (filter == null){
+            activity?.snack("add filter")
+            srRefresh.isRefreshing = false
+            return
+        }
         Api.clientService.routes(
-                1,1,1,"2000-1-1", "2020-1-1"
+                filter!!.type!!,
+                filter!!.startPoint!!,
+                filter!!.endPoint!!,
+                filter!!.startDate!!,
+                filter!!.endDate!!
         ).run2(srRefresh,{body ->
             adapter.list = body
             adapter.notifyDataSetChanged()
@@ -76,8 +87,8 @@ class XRouteListFragment : ListToolbarFragment<Route, XRouteListFragment.ViewHol
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.filter -> {
-//                val i = Intent(activity, RouteNewActivity::class.java)
-//                startActivityForResult(i, ROUTE_NEW_ACTIVITY)
+                val i = Intent(activity, RouteFilterActivity::class.java)
+                startActivityForResult(i, ROUTE_FILTER_ACTIVITY)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -87,8 +98,9 @@ class XRouteListFragment : ListToolbarFragment<Route, XRouteListFragment.ViewHol
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == ROUTE_NEW_ACTIVITY) {
+        if (requestCode == ROUTE_FILTER_ACTIVITY) {
             if (resultCode == Activity.RESULT_OK) {
+                filter = data!!.get2(Route.FilterRoute::class.java)
                 refreshListener!!.onRefresh()
             }
         }

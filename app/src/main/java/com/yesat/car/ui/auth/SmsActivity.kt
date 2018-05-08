@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.yesat.car.R
 import com.yesat.car.utility.*
+import com.yesat.car.utility.Shared.norm
 import kotlinx.android.synthetic.main.activity_sms.*
 
 class SmsActivity : AppCompatActivity() {
@@ -45,7 +46,11 @@ class SmsActivity : AppCompatActivity() {
     private fun authTest() {
         if (Shared.currentUser.token != null){
             val status = clientOrCourier()
-            startActivity(Intent(this, status))
+            val i = Intent(this, status)
+            val action = intent.getStringExtra(Shared.action)
+            norm(this,action)
+            i.putExtra(Shared.action,action)
+            startActivity(i)
         }
     }
 }

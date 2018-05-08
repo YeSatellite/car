@@ -8,6 +8,7 @@ import com.yesat.car.R
 import com.yesat.car.model.User
 import com.yesat.car.utility.Api
 import com.yesat.car.utility.Shared
+import com.yesat.car.utility.Shared.norm
 import com.yesat.car.utility.run2
 
 class StartActivity : AppCompatActivity() {
@@ -43,10 +44,13 @@ class StartActivity : AppCompatActivity() {
                         next()
                     }
                 })
-
     }
     fun next(){
-        startActivityForResult(Intent(this, SmsActivity::class.java),45)
+        val i = Intent(this, SmsActivity::class.java)
+        val action = intent.getStringExtra(Shared.action)
+        norm(this,action)
+        i.putExtra(Shared.action,action)
+        startActivityForResult(i,45)
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         finish()

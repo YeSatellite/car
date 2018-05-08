@@ -18,8 +18,6 @@
         <activity
             android:name=".ui.client.XMainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.courier.posted.XOfferListActivity" />
-        <activity android:name=".ui.courier.posted.CourierOfferPProfileActivity" />
         <activity android:name=".ui.client.active.CourierOfferAProfileActivity" />
         <activity android:name=".ui.client.OrderNewActivity" />
         <activity android:name=".ui.info.LocationActivity" />
@@ -35,7 +33,6 @@
         <activity android:name=".ui.auth.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
