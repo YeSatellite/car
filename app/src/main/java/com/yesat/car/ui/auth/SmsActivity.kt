@@ -50,8 +50,13 @@ class SmsActivity : AppCompatActivity() {
             val action = intent.getStringExtra(Shared.action)
             norm(this,action)
             i.putExtra(Shared.action,action)
-            startActivity(i)
+            startActivityForResult(i,0)
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if(Shared.currentUser.token != null)
+            finish()
     }
 }
 

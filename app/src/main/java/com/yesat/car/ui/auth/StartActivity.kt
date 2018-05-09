@@ -52,6 +52,7 @@ class StartActivity : AppCompatActivity() {
         i.putExtra(Shared.action,action)
         startActivityForResult(i,45)
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         finish()
     }

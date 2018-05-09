@@ -85,8 +85,10 @@ class CourierRegisterActivity : AppCompatActivity() {
             val citizenship = RequestBody.create(formData, user.citizenship!!)
             val dob = RequestBody.create(formData, user.dob!!)
             val type = RequestBody.create(formData, user.type!!)
+            val experience = RequestBody.create(formData, user.experience.toString())
             val image = image!!.toMultiPartImage("avatar")
-            Api.authService.register(phone,name,city,citizenship,dob,type,image).run3(this,{
+            Api.authService.register(phone,name,city,citizenship,dob,type,experience,image)
+                    .run3(this,{
                 val i = Intent(this, LoginActivity::class.java)
                 i.put2(user.phone!!)
                 startActivityForResult(i,FINISH_REQUEST_CODE)

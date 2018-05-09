@@ -49,6 +49,7 @@ object Api {
                 @Part("citizenship") citizenship:RequestBody,
                 @Part("dob") dob:RequestBody,
                 @Part("type") type:RequestBody,
+                @Part("experience") experience:RequestBody? = null,
                 @Part image: MultipartBody.Part? = null
         ): Call<Any>
 

@@ -1,439 +1,422 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
-
-    <ScrollView
-        android:id="@+id/scrollView3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/bg_grey"
-        app:layout_constraintBottom_toTopOf="@+id/v_add"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context="com.yesat.car.ui.RequestNewActivity">
+    android:background="@color/bg_grey"
+    tools:context="com.yesat.car.ui.courier.transport.TransportNewActivity">
 
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp">
 
-            <android.support.v7.widget.CardView
-
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical">
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal">
 
-                    <LinearLayout
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="bottom"
-                            android:text="TextView"
-                            android:textColor="@android:color/background_dark"
-                            android:textSize="18sp" />
-
-                        <EditText
-                            android:id="@+id/v_transport_type"
-                            android:layout_width="match_parent"
-                            android:layout_height="24dp"
-                            android:layout_weight="0.5"
-                            android:background="@drawable/et_bg"
-                            android:ems="10"
-                            android:focusable="false"
-                            android:hint="Name"
-                            android:inputType="textPersonName"
-                            android:paddingEnd="10dp"
-                            android:paddingStart="10dp"
-                            android:textSize="17sp" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="TextView"
-                            android:textColor="@android:color/background_dark"
-                            android:textSize="18sp" />
-
-                        <ImageView
-                            android:id="@+id/v_image1"
-                            android:layout_width="96dp"
-                            android:layout_height="54dp"
-                            android:layout_marginEnd="8dp"
-                            app:srcCompat="@drawable/avatar" />
-
-                        <ImageView
-                            android:id="@+id/v_image2"
-                            android:layout_width="96dp"
-                            android:layout_height="54dp"
-                            app:srcCompat="@drawable/avatar" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="bottom"
-                            android:text="TextView"
-                            android:textColor="@android:color/background_dark"
-                            android:textSize="18sp" />
-
-                        <EditText
-                            android:id="@+id/v_mark"
-                            android:layout_width="match_parent"
-                            android:layout_height="24dp"
-                            android:layout_weight="0.5"
-                            android:background="@drawable/et_bg"
-                            android:ems="10"
-                            android:focusable="false"
-                            android:hint="Name"
-                            android:inputType="textPersonName"
-                            android:paddingEnd="10dp"
-                            android:paddingStart="10dp"
-                            android:textSize="17sp" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="bottom"
-                            android:text="TextView"
-                            android:textColor="@android:color/background_dark"
-                            android:textSize="18sp" />
-
-                        <EditText
-                            android:id="@+id/v_model"
-                            android:layout_width="match_parent"
-                            android:layout_height="24dp"
-                            android:layout_weight="0.5"
-                            android:background="@drawable/et_bg"
-                            android:ems="10"
-                            android:focusable="false"
-                            android:hint="Name"
-                            android:inputType="textPersonName"
-                            android:paddingEnd="10dp"
-                            android:paddingStart="10dp"
-                            android:textSize="17sp" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="bottom"
-                            android:text="TextView"
-                            android:textColor="@android:color/background_dark"
-                            android:textSize="18sp" />
-
-                        <EditText
-                            android:id="@+id/v_number"
-                            android:layout_width="match_parent"
-                            android:layout_height="24dp"
-                            android:layout_weight="0.5"
-                            android:background="@drawable/et_bg"
-                            android:ems="10"
-                            android:hint="Name"
-                            android:inputType="textPersonName"
-                            android:paddingEnd="10dp"
-                            android:paddingStart="10dp"
-                            android:textSize="22sp" />
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="bottom"
-                            android:text="TextView"
-                            android:textColor="@android:color/background_dark"
-                            android:textSize="18sp" />
-
-                        <EditText
-                            android:id="@+id/v_body"
-                            android:layout_width="match_parent"
-                            android:layout_height="24dp"
-                            android:layout_weight="0.5"
-                            android:background="@drawable/et_bg"
-                            android:ems="10"
-                            android:focusable="false"
-                            android:hint="Name"
-                            android:inputType="textPersonName"
-                            android:paddingEnd="10dp"
-                            android:paddingStart="10dp"
-                            android:textSize="17sp" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="bottom"
-                            android:text="TextView"
-                            android:textColor="@android:color/background_dark"
-                            android:textSize="18sp" />
-
-                        <EditText
-                            android:id="@+id/v_shipping_type"
-                            android:layout_width="match_parent"
-                            android:layout_height="24dp"
-                            android:layout_weight="0.5"
-                            android:background="@drawable/et_bg"
-                            android:ems="10"
-                            android:hint="Name"
-                            android:inputType="textPersonName"
-                            android:paddingEnd="10dp"
-                            android:paddingStart="10dp"
-                            android:textSize="17sp"
-                            android:focusable="false" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="bottom"
-                            android:text="TextView"
-                            android:textColor="@android:color/background_dark"
-                            android:textSize="18sp" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginEnd="10dp"
-                            android:gravity="bottom"
-                            android:text="TextView"
-                            android:textColor="@android:color/background_dark"
-                            android:textSize="18sp" />
-
-                        <EditText
-                            android:id="@+id/v_length"
-                            android:layout_width="75dp"
-                            android:layout_height="24dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/et_bg"
-                            android:ems="10"
-                            android:hint="Name"
-                            android:inputType="numberDecimal"
-                            android:paddingEnd="10dp"
-                            android:paddingStart="10dp"
-                            android:textSize="17sp" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginEnd="10dp"
-                            android:gravity="bottom"
-                            android:text="TextView"
-                            android:textColor="@android:color/background_dark"
-                            android:textSize="18sp" />
-
-                        <EditText
-                            android:id="@+id/v_width"
-                            android:layout_width="75dp"
-                            android:layout_height="24dp"
-                            android:layout_weight="0.5"
-                            android:background="@drawable/et_bg"
-                            android:ems="10"
-                            android:hint="Name"
-                            android:inputType="numberDecimal"
-                            android:paddingEnd="10dp"
-                            android:paddingStart="10dp"
-                            android:textSize="17sp" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginEnd="10dp"
-                            android:gravity="bottom"
-                            android:text="TextView"
-                            android:textColor="@android:color/background_dark"
-                            android:textSize="18sp" />
-
-                        <EditText
-                            android:id="@+id/v_height"
-                            android:layout_width="75dp"
-                            android:layout_height="24dp"
-                            android:layout_weight="0.5"
-                            android:background="@drawable/et_bg"
-                            android:ems="10"
-                            android:hint="Name"
-                            android:inputType="numberDecimal"
-                            android:paddingEnd="10dp"
-                            android:paddingStart="10dp"
-                            android:textSize="17sp" />
-
-
-                    </LinearLayout>
+                        android:layout_weight="1"
+                        android:gravity="bottom"
+                        android:text="TextView"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18sp" />
 
                     <EditText
-                        android:id="@+id/v_comment"
+                        android:id="@+id/v_transport_type"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="24dp"
+                        android:layout_weight="0.5"
                         android:background="@drawable/et_bg"
                         android:ems="10"
-                        android:gravity="top"
+                        android:focusable="false"
                         android:hint="Name"
-                        android:inputType="text|textMultiLine"
-                        android:lines="5"
-                        android:paddingBottom="5dp"
+                        android:inputType="textPersonName"
                         android:paddingEnd="10dp"
                         android:paddingStart="10dp"
-                        android:paddingTop="5dp"
                         android:textSize="17sp" />
 
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal">
 
-            </android.support.v7.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18sp" />
 
-        </LinearLayout>
+                    <ImageView
+                        android:id="@+id/v_image1"
+                        android:layout_width="96dp"
+                        android:layout_height="54dp"
+                        android:layout_marginEnd="8dp"
+                        app:srcCompat="@drawable/avatar" />
 
-    </ScrollView>
-
-    <Button
-        android:id="@+id/v_add"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:text="add"
-        android:textColor="@color/cardview_light_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+                    <ImageView
+                        android:id="@+id/v_image2"
+                        android:layout_width="96dp"
+                        android:layout_height="54dp"
+                        app:srcCompat="@drawable/avatar" />
 
 
-</android.support.constraint.ConstraintLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom"
+                        android:text="TextView"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/v_mark"
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/et_bg"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:hint="Name"
+                        android:inputType="textPersonName"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"
+                        android:textSize="17sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom"
+                        android:text="TextView"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/v_model"
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/et_bg"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:hint="Name"
+                        android:inputType="textPersonName"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"
+                        android:textSize="17sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom"
+                        android:text="TextView"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/v_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/et_bg"
+                        android:ems="10"
+                        android:hint="Name"
+                        android:inputType="textPersonName"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"
+                        android:textSize="22sp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom"
+                        android:text="TextView"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/v_body"
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/et_bg"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:hint="Name"
+                        android:inputType="textPersonName"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"
+                        android:textSize="17sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom"
+                        android:text="TextView"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/v_shipping_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/et_bg"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:hint="Name"
+                        android:inputType="textPersonName"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"
+                        android:textSize="17sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom"
+                        android:text="TextView"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="bottom"
+                        android:text="TextView"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/v_length"
+                        android:layout_width="75dp"
+                        android:layout_height="24dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/et_bg"
+                        android:ems="10"
+                        android:hint="Name"
+                        android:inputType="numberDecimal"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"
+                        android:textSize="17sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="bottom"
+                        android:text="TextView"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/v_width"
+                        android:layout_width="75dp"
+                        android:layout_height="24dp"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/et_bg"
+                        android:ems="10"
+                        android:hint="Name"
+                        android:inputType="numberDecimal"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"
+                        android:textSize="17sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="bottom"
+                        android:text="TextView"
+                        android:textColor="@android:color/background_dark"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/v_height"
+                        android:layout_width="75dp"
+                        android:layout_height="24dp"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/et_bg"
+                        android:ems="10"
+                        android:hint="Name"
+                        android:inputType="numberDecimal"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"
+                        android:textSize="17sp" />
+
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/v_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/et_bg"
+                    android:ems="10"
+                    android:gravity="top"
+                    android:hint="Name"
+                    android:inputType="text|textMultiLine"
+                    android:lines="5"
+                    android:paddingBottom="5dp"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingTop="5dp"
+                    android:textSize="17sp" />
+
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+        <Button
+            android:id="@+id/v_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="add"
+            android:textColor="@color/cardview_light_background" />
+
+    </LinearLayout>
+
+</ScrollView>
 
