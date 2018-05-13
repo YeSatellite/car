@@ -15,4 +15,15 @@
     <string name="test_text_s_u"><u>Hello World</u></string>
     <string name="show_offers"><a>Show offers</a></string>
     <string name="is_empty">%1$s is empty.</string>
+    <string name="phone_number">phone number</string>
+    <string name="name">name</string>
+    <string name="dob">date of birth</string>
+    <string name="citizenship">Citizenship</string>
+    <string name="city">City</string>
+    <string name="register">Sigin up</string>
+    <string name="accept">Accept</string>
+    <string name="avatar">Avatar</string>
+    <string name="colon">:</string>
+    <string name="icon">icon</string>
+    <string name="experience">Experience</string>
 </resources>

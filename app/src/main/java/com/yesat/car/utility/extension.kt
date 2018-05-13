@@ -36,6 +36,10 @@ fun Activity.snack(text: String){
     Snackbar.make(rootView,text, Snackbar.LENGTH_LONG).show()
 }
 
+fun View.snack(text: String){
+    Snackbar.make(this,text, Snackbar.LENGTH_LONG).show()
+}
+
 @SuppressLint("RestrictedApi")
 fun BottomNavigationView.disableShiftMode() {
     val menuView = getChildAt(0) as BottomNavigationMenuView

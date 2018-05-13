@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -33,7 +34,8 @@
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toEndOf="@+id/v_image"
             app:layout_constraintTop_toTopOf="@+id/v_image"
-            app:srcCompat="@drawable/best" />
+            app:srcCompat="@drawable/best"
+            android:contentDescription="@string/icon" />
 
         <TextView
             android:id="@+id/v_ration_2dot"
@@ -42,7 +44,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text=":"
+            android:text="@string/colon"
             android:textColor="@android:color/background_dark"
             app:layout_constraintBottom_toBottomOf="@+id/v_rating_icon"
             app:layout_constraintStart_toEndOf="@+id/v_rating_icon"
@@ -53,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="TextView"
+            tools:text="8.7"
             android:textColor="@android:color/background_dark"
             app:layout_constraintBottom_toBottomOf="@+id/v_ration_2dot"
             app:layout_constraintStart_toEndOf="@+id/v_ration_2dot"
@@ -67,7 +69,8 @@
             android:layout_marginStart="32dp"
             app:layout_constraintBottom_toBottomOf="@+id/v_image"
             app:layout_constraintStart_toEndOf="@+id/v_image"
-            app:srcCompat="@drawable/call2" />
+            app:srcCompat="@drawable/call2"
+            android:contentDescription="@string/icon" />
 
         <TextView
             android:id="@+id/v_2"
@@ -76,7 +79,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text=":"
+            android:text="@string/colon"
             android:textColor="@android:color/background_dark"
             app:layout_constraintBottom_toBottomOf="@+id/v_1"
             app:layout_constraintStart_toEndOf="@+id/v_1"
@@ -87,7 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="TextView"
+            tools:text="87752166661"
             android:textColor="@android:color/background_dark"
             app:layout_constraintBottom_toBottomOf="@+id/v_2"
             app:layout_constraintStart_toEndOf="@+id/v_2"
@@ -101,7 +104,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="TextView"
+            tools:text="Ariana Grade"
             android:textColor="@android:color/background_dark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/v_image"
@@ -119,16 +122,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:text="sdasd :"
+            android:text="@string/experience"
+            android:textSize="18sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/colon"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/v_experience"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
             android:layout_weight="1"
-            android:text="TextView"
+            tools:text="24 year"
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -141,16 +149,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:text="sdasd :"
+            android:text="@string/citizenship"
+            android:textSize="18sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/colon"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/v_citizenship"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
             android:layout_weight="1"
-            android:text="TextView"
+            tools:text="Kazakhstan"
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -163,16 +176,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:text="sdasd :"
+            android:text="@string/city"
+            android:textSize="18sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/colon"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/v_city"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
             android:layout_weight="1"
-            android:text="TextView"
+            tools:text="Almaty"
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -185,16 +203,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:text="sdasd :"
+            android:text="@string/dob"
+            android:textSize="18sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/colon"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/v_dob"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
             android:layout_weight="1"
-            android:text="TextView"
+            tools:text="1996-06-14"
             android:textSize="18sp" />
     </LinearLayout>
 </LinearLayout>

@@ -23,8 +23,10 @@ class XRouteListFragment : ListToolbarFragment<Route, XRouteListFragment.ViewHol
 
     override fun refreshListener(adapter: ListAdapter, srRefresh: SwipeRefreshLayout) {
         if (filter == null){
-            activity?.snack("add filter")
-            srRefresh.isRefreshing = false
+            srRefresh.snack("asdf")
+            srRefresh.post {
+                srRefresh.isRefreshing = false
+            }
             return
         }
         Api.clientService.routes(
@@ -37,7 +39,7 @@ class XRouteListFragment : ListToolbarFragment<Route, XRouteListFragment.ViewHol
             adapter.list = body
             adapter.notifyDataSetChanged()
         },{ _, error ->
-            activity?.snack(error)
+            srRefresh.snack(error)
         })
     }
 

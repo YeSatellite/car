@@ -7,7 +7,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1">
 
         <LinearLayout
@@ -21,8 +21,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="phone number"
-                android:inputType="number"
+                android:hint="@string/phone_number"
+                android:inputType="phone"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="name"
+                android:hint="@string/name"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:focusable="false"
-                android:hint="dob"
+                android:hint="@string/dob"
                 android:inputType="date"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:focusable="false"
-                android:hint="citizenship"
+                android:hint="@string/citizenship"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:focusable="false"
-                android:hint="city"
+                android:hint="@string/city"
                 android:inputType="textPersonName" />
         </LinearLayout>
     </ScrollView>
@@ -69,6 +69,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:text="Register"
+        android:text="@string/register"
         android:textColor="@color/cardview_light_background" />
 </LinearLayout>

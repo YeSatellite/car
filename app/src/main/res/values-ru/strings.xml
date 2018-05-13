@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">car2</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="name">И.Ф.O</string>
+    <string name="dob">Дата рождение</string>
+    <string name="citizenship">Гражданство</string>
+    <string name="city">Город</string>
+    <string name="register">"Зарегистрироваться "</string>
+    <string name="is_empty">%1$s поле пустое</string>
+    <string name="accept">Принимать</string>
+    <string name="colon">:</string>
+    <string name="icon">Икона</string>
+    <string name="experience">Стаж</string>
+</resources>
